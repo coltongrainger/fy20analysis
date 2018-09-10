@@ -5,6 +5,8 @@ date: 2018-09-01
 bibliography: /home/colton/pro/19/prelims.bib
 ---
 
+## Assignment due 2018-09-12
+
 \newcommand{\ball}[2]{B_{#1}\left( #2 \right)}
 \newcommand{\card}[1]{\mathrm{card}\left( #1 \right)}
 \newcommand{\eps}{\varepsilon}
@@ -16,19 +18,19 @@ bibliography: /home/colton/pro/19/prelims.bib
 \newcommand{\sP}{\mathscr{P}}
 \newcommand{\sR}{\mathscr{R}}
 
-## Assignment due 2018-09-12
-
 ### Open balls in metric spaces
 
-Let $(X, \rho)$ be a metric space. 
-Now suppose $a \in X$ and $\eps > 0$. 
-We'll show that $$\ball{\rho}{\eps,a} := \left\{ x \in X : \rho(x,a) < \eps \right\}$$ is open in $X$.
+Let $(X, \rho)$ be a metric space. We will show that balls in the metric space are open.
+
+Take an arbitrary point in the space $x \in X$ and a radius $\eps > 0$. I claim $$\ball{\rho}{\eps,x} := \left\{ a \in X : \rho(a,x) < \eps \right\}$$ is open in $X$. 
+
+Indeed, take a point $a \in \ball{\rho}{\eps,x}$ (note that $\rho(a,x) < \eps$). Now consider the radius $\delta = \eps - \rho(x,a) > 0$. We need to show the open ball $\ball{\rho}{\delta, a}$ containing the point $a$, is nested in within a radius $\eps$ of $x$, i.e., we need to show $\ball{\rho}{\delta, a} \subset \ball{\rho}{\eps, x}$. Well, if $b \in \ball{\rho}{\delta, a}$, then $\rho(a,b) < \delta = \eps - \rho(x,a)$, with the triangle inequality we have $\rho(b,x) \leq \rho(a,b) + \rho(x,a) < \eps$, hence $b \in \ball{\rho}{\eps, x}$. 
+
+So for every point $a$ in the open ball $\ball{\rho}{\eps,x}$ there's a nested open ball $\ball{\rho}{\delta, a}$ such that $a \in \ball{\rho}{\delta,a} \subset \ball{\rho}{\eps,x}$. By definition, $\ball{\rho}{\eps,x}$ is open.
 
 ### New metric spaces from old
 
-Let $(X, d)$ be a metric space. 
-Define $\rho \colon X \times X \to [0,\infty)$ by $$\rho(x,y) = \frac{d(x,y)}{1+d(x,y)}.$$ 
-We'll show that $\rho$ is a metric on $X$.
+Let $(X, d)$ be a metric space. Define $\rho \colon X \times X \to [0,\infty)$ by $$\rho(x,y) = \frac{d(x,y)}{1+d(x,y)}.$$ We'll show that $\rho$ is a metric on $X$.
 
 (a) Now, for any point $x \in X$ and radius $r > 0$, $$\ball{d}{r,x} = \ball{\rho}{\frac{r}{1+r}, x}.$$
 
