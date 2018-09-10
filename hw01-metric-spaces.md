@@ -32,6 +32,15 @@ So for every point $a$ in the open ball $\ball{\rho}{\eps,x}$ there's a nested o
 
 Let $(X, d)$ be a metric space. Define $\rho \colon X \times X \to [0,\infty)$ by $$\rho(x,y) = \frac{d(x,y)}{1+d(x,y)}.$$ We'll show that $\rho$ is a metric on $X$.
 
+*Key idea.* We have some transformation $f: [0,\infty) \to  f: [0,\infty)$ of the metric $d$ given by $f(k) = \frac{k}{1+k}$. Now $f$ is strictly monotone, so order preserving, and concave downwards, so subadditive. We'll make repeated use of the property that $$\text{ if } c, k \in [0,\infty) \text{ and } c \leq k, \text{ we have } c(1+k) = c+ck \leq k +ck = k(1+c) \text{ whence } \frac{c}{1+c} \leq \frac{k}{1+k}.$$ We have equality iff $c=k$.
+
+Now to show that $\rho$ is a metric, take three arbitrary points $x,y,z \in X$.
+
+- We have $y=x$ iff $d(x,y) = 0$ iff $\pho(x,y) = 0$, since for the metric transformation defined above $f(d(x,y)) = \pho(x,y)$ and $f(0) = 0$ and $f^{-1}(0) = 0$.
+- Symmetry of $\pho$ is clear from the symmetry of $d$.
+- To verify the triangle inequality holds in the metric space $(X, \pho)$, we need to show
+  $$\frac{d(y,x)}{1+d(y,x)} + \frac{d(z,y)}{1+d(z,y)} \geq \frac{d(z,x)}{1+d(z,x)}.$$
+  So let $a = d(y,x)$, $b = d(z,y)$ and $c = d(z,x)$ and note $a,b,c \in [0,\infty)$. Since the triangle inequality holds in the space $(X,d)$,  we have $a + b \geq c$. So consider $k = a+b$. It follows that $c \leq k$ and thus $\frac{c}{1+c} \leq \frac{k}{1+k}$. That is, $\frac{c}{1+c} \leq \frac{a+b}{1+a+b}$ hence $$\frac{c}{1+c} \leq \frac{a+b}{1+a+b} = \frac{a}{1+a+b} = \frac{b}{1+a+b} \leq {4$$
 (a) Now, for any point $x \in X$ and radius $r > 0$, $$\ball{d}{r,x} = \ball{\rho}{\frac{r}{1+r}, x}.$$
 
 (b) Further, if $G$ is an $(X,d)$-open set, then $G$ is also $(X,\rho)$-open.
