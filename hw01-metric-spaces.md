@@ -11,6 +11,7 @@ bibliography: /home/colton/pro/19/prelims.bib
 \newcommand{\card}[1]{\mathrm{card}\left( #1 \right)}
 \newcommand{\eps}{\varepsilon}
 \newcommand{\RR}{\mathbf{R}}
+\newcommand{\NN}{\mathbf{N}}
 \newcommand{\sA}{\mathscr{A}}
 \newcommand{\sB}{\mathscr{B}}
 \newcommand{\sE}{\mathscr{E}}
@@ -24,7 +25,7 @@ Let $(X, \rho)$ be a metric space. We will show that balls in the metric space a
 
 Take an arbitrary point in the space $x \in X$ and a radius $\eps > 0$. I claim $$\ball{\rho}{\eps,x} := \left\{ a \in X : \rho(a,x) < \eps \right\}$$ is open in $X$. 
 
-Indeed, take a point $a \in \ball{\rho}{\eps,x}$ (note that $\rho(a,x) < \eps$). Now consider the radius $\delta = \eps - \rho(x,a) > 0$. We need to show the open ball $\ball{\rho}{\delta, a}$ containing the point $a$, is nested in within a radius $\eps$ of $x$, i.e., we need to show $\ball{\rho}{\delta, a} \subset \ball{\rho}{\eps, x}$. Well, if $b \in \ball{\rho}{\delta, a}$, then $\rho(a,b) < \delta = \eps - \rho(x,a)$, with the triangle inequality we have $\rho(b,x) \leq \rho(a,b) + \rho(x,a) < \eps$, hence $b \in \ball{\rho}{\eps, x}$. 
+Indeed, take a point $a \in \ball{\rho}{\eps,x}$ (note that $\rho(a,x) < \eps$). Now consider the radius $\delta = \eps - \rho(x,a) > 0$. We need to show the open ball $\ball{\rho}{\delta, a}$ containing the point $a$, is nested in within a radius $\eps$ of $x$, i.e., we need to show^[We denote "$X$ is a subset of $Y$" by $X \subset Y$ and "$Y$ is a proper subset of $Y$" by $X\subsetneq Y$.] $\ball{\rho}{\delta, a} \subset \ball{\rho}{\eps, x}$. Well, if $b \in \ball{\rho}{\delta, a}$, then $\rho(a,b) < \delta = \eps - \rho(x,a)$, with the triangle inequality we have $\rho(b,x) \leq \rho(a,b) + \rho(x,a) < \eps$, hence $b \in \ball{\rho}{\eps, x}$. 
 
 So for every point $a$ in the open ball $\ball{\rho}{\eps,x}$ there's a nested open ball $\ball{\rho}{\delta, a}$ such that $a \in \ball{\rho}{\delta,a} \subset \ball{\rho}{\eps,x}$. By definition, $\ball{\rho}{\eps,x}$ is open.
 
@@ -32,15 +33,23 @@ So for every point $a$ in the open ball $\ball{\rho}{\eps,x}$ there's a nested o
 
 Let $(X, d)$ be a metric space. Define $\rho \colon X \times X \to [0,\infty)$ by $$\rho(x,y) = \frac{d(x,y)}{1+d(x,y)}.$$ We'll show that $\rho$ is a metric on $X$.
 
-*Key idea.* We have some transformation $f: [0,\infty) \to  f: [0,\infty)$ of the metric $d$ given by $f(k) = \frac{k}{1+k}$. Now $f$ is strictly monotone, so order preserving, and concave downwards, so subadditive. We'll make repeated use of the property that $$\text{ if } c, k \in [0,\infty) \text{ and } c \leq k, \text{ we have } c(1+k) = c+ck \leq k +ck = k(1+c) \text{ whence } \frac{c}{1+c} \leq \frac{k}{1+k}.$$ We have equality iff $c=k$.
+*Key idea.* We have some transformation $f: [0,\infty) \to  [0,\infty)$ of the metric $d$ given by $f(d) = \frac{d}{1+d}$. Now $f$ is strictly monotone, so order preserving, and concave, so subadditive. We'll make repeated use of the property that $$\text{ if } c, k \in [0,\infty) \text{ and } c \leq k, \text{ we have } c(1+k) = c+ck \leq k +ck = k(1+c) \text{ whence } \frac{c}{1+c} \leq \frac{k}{1+k}.$$ We have equality iff $c=k$.
 
 Now to show that $\rho$ is a metric, take three arbitrary points $x,y,z \in X$.
 
-- We have $y=x$ iff $d(x,y) = 0$ iff $\pho(x,y) = 0$, since for the metric transformation defined above $f(d(x,y)) = \pho(x,y)$ and $f(0) = 0$ and $f^{-1}(0) = 0$.
-- Symmetry of $\pho$ is clear from the symmetry of $d$.
-- To verify the triangle inequality holds in the metric space $(X, \pho)$, we need to show
-  $$\frac{d(y,x)}{1+d(y,x)} + \frac{d(z,y)}{1+d(z,y)} \geq \frac{d(z,x)}{1+d(z,x)}.$$
-  So let $a = d(y,x)$, $b = d(z,y)$ and $c = d(z,x)$ and note $a,b,c \in [0,\infty)$. Since the triangle inequality holds in the space $(X,d)$,  we have $a + b \geq c$. So consider $k = a+b$. It follows that $c \leq k$ and thus $\frac{c}{1+c} \leq \frac{k}{1+k}$. That is, $\frac{c}{1+c} \leq \frac{a+b}{1+a+b}$ hence $$\frac{c}{1+c} \leq \frac{a+b}{1+a+b} = \frac{a}{1+a+b} = \frac{b}{1+a+b} \leq {4$$
+- We have $y=x$ iff $d(x,y) = 0$ iff $\rho(x,y) = 0$, since for the metric transformation defined above $f(d(x,y)) = \rho(x,y)$ and $f(0) = 0$ and $f^{-1}(0) = 0$.
+- Symmetry of $\rho$ is clear from the symmetry of $d$; consider $\frac{d(x,y)}{1+d(x,y)} = \frac{d(y,x)}{1+d(y,x)}$.
+- To verify the triangle inequality holds in the metric space $(X, \rho)$, let $a = d(y,x)$, $b = d(z,y)$ and $c = d(z,x)$. We need to show
+  $$\frac{c}{1+c} \leq \frac{a}{1+a} + \frac{b}{1+b}.$$
+  Note $a,b,c \in [0,\infty)$. Since the triangle inequality holds in the space $(X,d)$,  we have $c \leq a + b$. Consider $k = a+b$. It follows that $c \leq k$ and thus $\frac{c}{1+c} \leq \frac{k}{1+k}$. That is, $\frac{c}{1+c} \leq \frac{a+b}{1+a+b}$ hence, with $a,b \geq 0$,  $$\frac{c}{1+c} \leq \frac{a+b}{1+a+b} = \frac{a}{1+a+b} + \frac{b}{1+a+b} \leq \frac{a}{1+a} + \frac{b}{1+b},$$
+  as desired.
+
+We conclude that $\rho$ is a metric on $X$ because we've demonstrated
+
+- $\rho$ is nonnegative in general and zero only between identical points,
+- $\rho$ is symmetric between points, and 
+- $\rho$ has the triangle inequality for distances between any three points.
+
 (a) Now, for any point $x \in X$ and radius $r > 0$, $$\ball{d}{r,x} = \ball{\rho}{\frac{r}{1+r}, x}.$$
 
 (b) Further, if $G$ is an $(X,d)$-open set, then $G$ is also $(X,\rho)$-open.
@@ -63,11 +72,37 @@ We'll demonstrate that the Borel $\sigma$-algebra $\sB_\RR$ is generated by the 
 
 ### Infinite $\sigma$-algebras [@Fo99, number 1.3]
 
-Let $\sM$ be an infinite $\sigma$-algebra. Then:
+Let $\sM$ be an infinite $\sigma$-algebra. Then (a) $\sM$ contains an infinite sequence of disjoint nonempty sets, and (b) $\card{\sM} \geq \mathfrak{c}$.
 
-(a) $\sM$ contains an infinite sequence of disjoint nonempty sets.
+*Proof of (a).*
 
-(b) $\card{\sM} \geq \mathfrak{c}$.
+We'll show the existence of a set $\{E_i\}_{i=1}^{\infty}$ of nonempty disjoint events in the $\sigma$ algebra. We proceed by induction on the number of such disjoint sets, indexed by some function $f\colon \NN \to \sM$.
+
+As a base for induction,  consider two distinct nonempty events $E_1$ and $E_2$ in $\sM$, which exist since $\sM$ is infinite.
+
+- Case: $E_2 \setminus E_1$ is empty. Then $E_2 \subsetneq E_1$ (since $E_2 \neq E_1$). 
+
+  - So let $f(1) = E_1 \setminus E_2$ (nonempty because $E_2$ is a proper subset) and 
+  - $f(2) = E_2$ (nonempty by construction).
+
+- Case: $E_2 \setminus E_1$ is nonempty. 
+
+  - Then let $f(1) = E_1$ (nonempty by construction) and 
+  - $f(2) = E_2 \setminus E_1$ (nonempty in this case).
+
+For the inductive step, suppose that we have a set of $n$ disjoint nonempty events $\{E_i\}_{i=1}^n$. Since $\sM$ is infinite, $\sM$ contains an $E_{n+1}$ distinct from the finite set of all possible unions of the $E_i$ for $1 \leq i \leq n$ (there are $2^n$ of such possible unions, given that $\sP(\{\{E_i\}_{i=1}^n)$ has a natural one-to-one correspondence with the set of such possible unions).
+
+- Case: $E_{n+1} \setminus \left(\cup_{i=1}^n E_i\right)$ is empty. Then $E_{n+1} \subsetneq \cup_{i=1}^nE_i$ (since $E_{n+1}$ was chosen distinct from unions of the $E_i$). 
+
+  - So let $f(i) = E_i \setminus E_{n+1}$ for all $1 \leq i \leq n$ (nonempty because $E_{n+1}$ is distinct from the $E_i$, and contained in their union) and 
+  - $f(n+1) = E_{n+1}$ (nonempty by construction).
+
+- Case: $E_{n+1} \setminus \left(\cup_{i=1}^n E_i\right)$ is nonempty. 
+
+  - Then let $f(i) = E_i$ for all $1\leq i\leq n$ (nonempty by construction) and 
+  - $f(n+1) = E_{n+1} \setminus \left(\cup_{i=1}^n E_i\right)$ (nonempty in this case).
+
+In either case, the set $\{f(i)\}_{i=1}^{n+1}$ is a nonempty collection of disjoint events in the $\sigma$-algebra, which concludes our induction on $n$.
 
 ### Closure under countable increasing unions [@Fo99, number 1.4]
 
