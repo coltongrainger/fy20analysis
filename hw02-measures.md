@@ -61,4 +61,28 @@ Let $\sA$ be the collection of finite unions of sets of the form $(a,b] \cap \QQ
 
 (a) Knowing "if $\sE$ is an elementary family, the collection $\sA$ of finite disjoint unions of members of $\sE$ is an algebra" we have that $\sA$ is an algebra of $\QQ$.
 
+\setcounter{section}{0} 
+
+## Revisions
+
+Problems revised for completion.
+
+### Closure under countable increasing unions [@Fo99, number 1.4]
+
+An algebra $\sA$ is an $\sigma$-algebra iff $\sA$ is closed under countable increasing unions.
+That is, $$\text{if } \{E_j\}_1^\infty \subset \sA \text{ and } E_1 \subset E_2 \subset \cdots, \text{ then } \cup_1^\infty \in \sA.$$
+
+### Linear combinations of measures [@Fo99, number 1.7]
+
+If $\mu_1,\ldots,\mu_n$ are measures on $(X, \sM)$ and $a_1, \ldots,a_n \in [0,\infty)$, then $\sum_1^n a_j \mu_j$ is a measure on $(X,\mu)$.
+
+### Summing sets by union and intersection [@Fo99, number 1.9]
+
+If $(X, \sM, \mu)$ is a measure space and $E, F \in \sM$, then $$\mu(E) + \mu(F) = \mu(E\cup F) + \mu(E\cap F).$$
+
+### A measure relative to set intersection [@Fo99, number 1.10]
+
+If $(X, \sM, \mu)$ is a measure space and $E \in \sM$, define $$\mu_E(A) = \mu(A \cap E) \text{ for all } A \in \sM.$$
+Then $\mu_E$ is a measure.
+
 ## References
