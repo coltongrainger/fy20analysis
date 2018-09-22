@@ -22,6 +22,19 @@ Let $(X, \sM, \mu)$ be a finite measure space.
 (b) Say that $E \sim F$ iff $\mu(E \Delta F) = 0$: then $\sim$ is an equivalence relation on $\sM$.
 (c) If $E, F \in \sM$, define $\rho(E,F) = \mu(E \Delta F)$. Then $\rho(E,G)\le \rho(E,F) + \rho(F,G)$ for all $E,F,G \in \sM$, and hence $\rho$ defines a metric on the quotient space $\sM/\sim$.
 
+*Proof.* Let $E, F$ be measurable sets, and suppose that $\mu(E\Delta F) = 0$. Since $$E \Delta F = (E \setminus F) \sqcup (F \setminus E)$$ from additivity we have $0 = \mu(E\Delta F) = \mu(E \setminus F) +  \mu(F \setminus E)$. Now $\mu$ maps into $[0,\infty]$, so both $\mu(E \setminus F) = \mu(F \setminus E) = 0$. Lastly, break into disjoint sets $E = (E \setminus F) \sqcup (E \cap F)$ and $F = (F \setminus E) \sqcup (F \cap E)$, so that, again by additivity, we prove (a)
+\begin{align*}
+\mu(E) &= \mu(E \setminus F) + \mu(E \cap F)\\
+    &= \mu(E \cap F) + \mu(F \setminus F)\\
+    &= \mu(F).
+\end{align*}
+
+For the relation defined on $\sM$ by $E \sim F$ iff $\mu(E \Delta F) = 0$,
+
+- $E \sim E$ as $E \Delta E = \emptyset$ is a null set under $\mu$,
+- $E \sim F$ implies $F \sim E$ as $E \Delta F = F \Delta E$,
+- $E \sim F$ and $F \sim G$  
+
 ### Large sets in semifinite measures [@Fo99, number 2.14] 
 
 If $\mu$ is a semifinite measure and $\mu(E) = \infty$, then for any $C > 0$ there exists $F \subset E$ with $C < \mu(F) < \infty$.
