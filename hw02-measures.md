@@ -25,7 +25,7 @@ $$\sum_{i=1}^n \mu(E_i) = \sum_{i=1}^n\sum_{\forall j} \mu(C_j^i).$$
 
 We conclude that $\sum_{i=1}^n \mu(E_i) \geq 3$, so there's a $E_i$ with $\mu(E_i) \ge \frac{3}{n}.$ \qedsymbol
 
-### Equivalence relations on a finite space [@Fo99, number 2.12]
+### Equivalence relations on a finite space [@Fo99, number 1.12]
 
 Let $(X, \sM, \mu)$ be a finite measure space.
 
@@ -52,29 +52,56 @@ For the relation defined on $\sM$ by $E \sim F$ iff $\mu(E \triangle F) = 0$,
 
 Let $\bar{\sM}$ be the set of equivalence classes in $\sM$ by the relation $\sim$. To show the function $\rho \colon \bar{\sM} \times \bar{\sM} \to [0,\infty]$ defined by $\rho(\bar{E}, \bar{F}) = \mu(E \triangle F)$ is a metric, consider the equivalence classes of any three measurable sets $E$, $F$, and $G$. Because $\rho$ is defined on $\bar{\sM}$, we know $\rho(\bar{E}, \bar{F}) = 0$ iff $\mu(E \triangle F) = 0$ iff $\bar{E} = \bar{F}$. Because the binary operator $\triangle$ is symmetric, $\rho$ is symmetric. The triangle inequality on $\rho$ follows from $\mu(E \triangle G) \leq \mu(E \triangle F) + \mu(F \triangle G)$. Therefore $\rho$ is a metric on $\bar{\sM}$.
 
-### Large sets in semifinite measures [@Fo99, number 2.14] 
+### Large sets in semifinite measures [@Fo99, number 1.14] 
 
 If $\mu$ is a semifinite measure and $\mu(E) = \infty$, then for any $C > 0$ there exists $F \subset E$ with $C < \mu(F) < \infty$.
 
-*Proof*. Because $\mu$ is semifinite, for any $E \in \sM$ such that $\mu(E) = \infty$ the set $$\sF = \{ F \subset E : F \text{ measurable and } 0 < \mu(F) < \mu(E)\}$$ is non-empty. So choose an arbitrary $E \in \sM$. Now consider $k = \sup_{F \in \sF} \mu(F)$. If $k = \infty$ the claim follows, because we would have, for all $C > 0$, some set $B \in \sF$ such that $\mu(B) > 0$. We therefore will suppose $k < \infty$ and proceed to find a sequence $\{F_i\}_1^\infty \subset \sF$ such that $\mu(\cup_1^\infty F_i) = \infty$.
+*Proof*. Because $\mu$ is semifinite, for any $E \in \sM$ such that $\mu(E) = \infty$ the set $$\sF = \{ F \subset E : F \text{ is measurable and } 0 < \mu(F) < \mu(E)\}$$ is non-empty. So choose an arbitrary $E \in \sM$. Now consider $k = \sup_{F \in \sF} \mu(F)$. If $k = \infty$ the claim follows, because we would have, for all $C > 0$, some set $B \in \sF$ such that $\mu(B) > 0$. We therefore will suppose $k < \infty$ and proceed to find a sequence $\{F_i\}_1^\infty \subset \sF$ such that $\mu(\cup_1^\infty F_i) = \infty$.
 
-For contradiction, suppose $k < \infty$ and there's no sequence $\{F_i\}$ in $\sF$ with $\mu(\cup F_i) = \infty$. By additivity, $\mu(\cup F_i) + \mu(E \setminus \cup F_i) = \mu(E) = \infty$. We've assumed $\mu(F_i) < \infty$, so for the previous equality to hold we must have $\mu(E \setminus \cup F_i) = \infty$. Because $\mu$ is semifinite, there's a set $G \in \sM$ such that $G \subset (E \setminus \cup F_i)$ and $0 < \mu(G) < \infty$.
+For contradiction, suppose $k < \infty$ and there's no sequence $\{F_i\}$ in $\sF$ with $\mu(\cup F_i) = \infty$. Yet clearly there's a sequence $\{F_i\} \subset \sF$ such that $\mu(F_i) \to k$. For this sequence, by additivity, $$\mu(\cup F_i) + \mu(E \setminus \cup F_i) = \mu(E) = \infty.$$ We've assumed $\mu(\cup F_i) < \infty$, so for the previous equality to hold we must have $\mu(E \setminus \cup F_i) = \infty$. Because $\mu$ is semifinite, there's a set $G \in \sM$ such that $G \subset (E \setminus \cup F_i)$ and $0 < \mu(G) < \infty$. Observe that $G \sqcup (\cup F_i) \in \sF$. Hence the contradiction $$> k \ge \mu(G \sqcup (\cup F_i)) = \mu(G) + \mu(\cup F_i) > \mu(\cup F_i) \ge k$$ where we have $\mu(\cup F_i) \ge k$ as a consequence of monotonicity and continuity from below when $\mu(F_i) \to k$.
 
-Now $G \sqcup (\cup F_i) \in \sF$
+We have argued that there's a sequence $\{F_i\} \subset \sF$ such that $\mu(\cup F_i) = \infty$. As a direct result, we conclude that for all $C > 0$ there's an $n \in \NN$ such that $\mu(\cup_1^n F_i) > C$. \qedsymbol
 
+### Semifinite parts [@Fo99, number 1.15]
 
-### Semifinite parts [@Fo99, number 2.15]
+\newcommand{\fmss}[1]{\mathrm{fmss}(#1)}
 
-If $\mu$ is a measure on $(X, \sM)$, define $\mu_0$ on $\sM$ for each $E \subset X$ by $$\mu_0(E) = \sup\{\mu(F) : F \subset E \text{ and } \mu(F) \le \infty\}.$$
+If $\mu$ is a measure on $(X, \sM)$, define $\mu_0(E)$ for each $E \in \sM$ by $$\mu_0(E) = \sup\{\mu(F) : F \subset E \text{ and } \mu(F) \le \infty\}.$$
 
-(a) $\mu_0$ is a semifinite measure.^[It's called the **semifinite part** of $\mu$.]
+(a) $\mu_0$ is a semifinite measure on $\sM$.^[It's called the **semifinite part** of $\mu$.]
 (b) If $\mu$ is semifinite, then $\mu_0 = \mu$.
 
-### Countable additivity for intersections in outer measures [@Fo99, number 2.17]
+*Proof.* To introduce notation, let $\fmss{E}$ denote $\{\mu(F) : F \subset E \text{ and } \mu(F) \le \infty\}$, the set of measures of the "finite measure subsets" of E. Then define $\mu_0$ on $\sM$ by $\mu_0(E) = \sup\fmss{E}$. I claim $\mu_0$ inherits two properties from $\mu$, namely that
+
+- $\mu_0$ assigns no mass to the empty set, and 
+- $\mu_0$ has countable additivity.
+
+We'll now argue $\mu_0$ is semifinite. Suppose that $\mu_0(E) =\infty$. We aim to show there's a subset $G \subset E$ such that $0 < \mu_0(G) < \mu_0(E)$. By definition of $\fmss{E}$ we know $\infty \notin \fmss{E}$. In order to have $\infty = \mu_0(E) = \sup\fmss{E}$ there must exist a sequence $\{F_j\}_1^\infty$ such that $F_j \subset E$, $\mu(F_j) < \infty$, and $\mu(F_j) \to \infty$.
+
+Choose $G$ from the $F_j$ where $\mu(G) > 0$ (such a $G$ exists, for countable many of the $F_j$ have non-zero measure). Because $\mu(G) \in \fmss{G}$, we have $$\mu_0(G) = \sup\fmss{G} \ge \mu(G) > 0.$$ Can $\mu_0(G) = \infty$? No, by monotonicity, $\mu(G)$ is a finite upper bound for $\fmss{G}$, and therefore $$\mu_0(G) = \sup \fmss{G} \le \mu(G) = \mu(F_{j'}) < \infty.$$ Because we have $G \subset E$ and $0 < \mu_0(G) < \infty$, we conclude $\mu_0$ is a semifinite measure, proving (a).
+
+Assume now that $\mu$ is semifinite. Take an arbitrary $E \in \sM$. We argue that $\mu_0 = \mu$ in three cases:
+
+1. Suppose $\mu(E) < \infty$. Then $\mu(E) \in \fmss{E}$. Then $\mu_0(E) := \sup \fmss{E} \ge \mu(E)$. By monotonicity, if $F \subset E$ then $\mu(F) \le \mu(E)$. So $\mu(E)$ is an upper bound for $\fmss{E}$. Then $\mu_0(E):= \sup\fmss{E} \le \mu(E)$. 
+2. In the case that $\mu_0(E) = \infty$, because $\mu(E)$ is an upper bound for $\fmss{E}$ we have $\infty = \mu_0(E) \le \mu(E)$.
+3. Lastly, suppose $\mu(E) = \infty$. Since $\mu$ is a semifinite measure, by previous exercise (large sets in semifinite measures), there's an unbounded sequence of values in $\fmss{E}$. Thence $\mu_0(E) := \sup\fmss{E} = \infty$.
+
+We conclude that $\mu = \mu_0$, proving (b). \qedsymbol
+
+### Countable additivity for intersections in outer measures [@Fo99, number 1.17]
 
 If $\mu^*$ is an outer measure and $\{A_j\}_1^\infty$ is a sequence of disjoint $\mu^*$-measurable sets, then $\mu^*(E \cap (\cup_1^\infty A_j)) = \sum_1^\infty \mu^*(E\cap A_j)$ for any $E \subset X$.
 
-### [@Fo99, number 2.18]
+\newcommand{\msbl}{$\mu^*$-measurable}
+
+*Proof.* Let $E \subset X$ and consider an arbitrary disjoint sequence $\{A_j\}_1^\infty$ of \msbl\ sets. We'll proceed by strong induction on the number of $A_j$ in the union $\cup_1^n A_j$.
+
+For a base case, we have the tautology: $\mu^*(A_1 \cap E) = \sum_1^1 \mu^*(A_j \cap E).$ Now assume for natural numbers $k < n$ that $\mu^*(E \cap (\cup_1^k A_j)) = \sum_1^k \mu^*(E\cap A_j)$. By Carathéodory's theorem, we have that $\mu^*$ restricted to \msbl\ sets is a measure. So noting $A_{n} \cap E$ is \msbl\ with each $A_j \cap E$ disjoint, we have additivity. Thus 
+$$\mu^*\left(\cup_{j=1}^{n} A_j \cap E\right) = \mu^*\left(\left(\cup_{j=1}^{n-1} A_j \cap E\right) \sqcup \left(\cup_{j=1}^{n-1} A_j \cap E\right)\right) = \sum_{j=1}^{n-1} \mu^*(A_j \cap E) + \mu^*(A_{k+1} \cap E) = \sum_{j=1}^{n} \mu^*(A_j \cap E).$$
+
+Assuming that $E \cap A_j$ is \msbl for any $j$, we are done. \qedsymbol
+
+### [@Fo99, number 1.18]
 
 Let $\sA \subset \sP(X)$ be an algebra, $\sA_\sigma$ the collection of countable unions of sets in $\sA$, and $\sA_{\sigma\delta}$ the collection of countable intersections of sets in $\sA_\sigma$. Let $\mu$ be a premeasure on $\sA$ and $\mu^*$ the induced outer measure.
 
@@ -82,24 +109,24 @@ Let $\sA \subset \sP(X)$ be an algebra, $\sA_\sigma$ the collection of countable
 (b) If $\mu^*(E) < \infty$, then $E$ is $\mu^*$ measurable iff there exists $B \in \sA_{ \sigma\delta }$ with $E \subset B$ and $\mu^*(B\setminus E) = 0$.
 (c) If $\mu$ is $\sigma$-finite, the restriction $\mu^*(E) <\infty$ in (b) is superfluous.
 
-### [@Fo99, number 2.19]
+### [@Fo99, number 1.19]
 
 Let $\mu^*$ be an outer measure on $X$ induced from a premeasure, such that $\mu^*(X) < \infty$. If $E \subset X$, define the inner measure of $E$ to be $\mu_*(E) = \mu^*(X) - \mu^*(E^c)$. Then $E$ is $\mu^*$-measurable iff $\mu^*(E) = \mu_*(E)$.
 
-### [@Fo99, number 2.22]
+### [@Fo99, number 1.22]
 
 Let $(X, \sM, \mu)$ be a measure space, $\mu^*$ the outer measure induced by $\mu$ according to $$\mu^*(E) = \inf\left\{\sum_1^\infty\mu(A_j): A_j \in \sA, E \subset \bigcup_1^\infty A_j\right\},$$ and $\sM^*$ the $\sigma$-algebra of $\mu^*$-measurable sets, and $\tilde{\mu} = \mu^* | \sM^*$.
 
 (a) If $\mu$ is $\sigma$-finite, then $\tilde{\mu}$ is the completion of $\mu$.
 
-### [@Fo99, number 2.23]
+### [@Fo99, number 1.23]
 
 Let $\sA$ be the collection of finite unions of sets of the form $(a,b] \cap \QQ$ with $-\infty \le a\le b \le \infty$. 
 
 (a) Knowing "if $\sE$ is an elementary family, the collection $\sA$ of finite disjoint unions of members of $\sE$ is an algebra" we have that $\sA$ is an algebra of $\QQ$.
 
+<!---
 \setcounter{section}{0} 
-
 ## Revisions
 
 Problems revised for completion.
@@ -121,5 +148,6 @@ If $(X, \sM, \mu)$ is a measure space and $E, F \in \sM$, then $$\mu(E) + \mu(F)
 
 If $(X, \sM, \mu)$ is a measure space and $E \in \sM$, define $$\mu_E(A) = \mu(A \cap E) \text{ for all } A \in \sM.$$
 Then $\mu_E$ is a measure.
+---> 
 
 ## References
