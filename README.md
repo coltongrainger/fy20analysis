@@ -2,6 +2,6 @@
 
 Course with [Judith Packer](https://www.colorado.edu/math/judith-packer).
 
-See also <http://quamash.net/prelims/algebra>.
+See also <http://quamash.net/prelims/analysis>.
 
 CC-0
