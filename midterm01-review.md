@@ -7,26 +7,11 @@ bibliography: /home/colton/Downloads/coltongrainger.bib
 macros: yes
 ---
 
-
 ## Revisions
 
-### Closure under countable increasing unions [@Fo99, number 1.4]
+### [@Fo99, number 1.10]
 
-An algebra $\sA$ is an $\sigma$-algebra iff $\sA$ is closed under countable increasing unions.
-That is, $$\text{if } \{E_j\}_1^\infty \subset \sA \text{ and } E_1 \subset E_2 \subset \cdots, \text{ then } \cup_1^\infty \in \sA.$$
-
-### Linear combinations of measures [@Fo99, number 1.7]
-
-If $\mu_1,\ldots,\mu_n$ are measures on $(X, \sM)$ and $a_1, \ldots,a_n \in [0,\infty)$, then $\sum_1^n a_j \mu_j$ is a measure on $(X,\mu)$.
-
-### Summing sets by union and intersection [@Fo99, number 1.9]
-
-If $(X, \sM, \mu)$ is a measure space and $E, F \in \sM$, then $$\mu(E) + \mu(F) = \mu(E\cup F) + \mu(E\cap F).$$
-
-### A measure relative to set intersection [@Fo99, number 1.10]
-
-If $(X, \sM, \mu)$ is a measure space and $E \in \sM$, define $$\mu_E(A) = \mu(A \cap E) \text{ for all } A \in \sM.$$
-Then $\mu_E$ is a measure.
+If $(X, \sM, \mu)$ is a measure space and $E \in \sM$, define $\mu_E(A) = \mu(A \cap E) \text{ for all } A \in \sM.$ Then $\mu_E$ is a measure.
 
 ### [@Fo99, number 1.18]
 
@@ -42,37 +27,29 @@ Let $\mu^*$ be an outer measure on $X$ induced from a premeasure, such that $\mu
 
 ### [@Fo99, number 1.22]
 
-Let $(X, \sM, \mu)$ be a measure space, $\mu^*$ the outer measure induced by $\mu$ according to $$\mu^*(E) = \inf\left\{\sum_1^\infty\mu(A_j): A_j \in \sA, E \subset \bigcup_1^\infty A_j\right\},$$ and $\sM^*$ the $\sigma$-algebra of $\mu^*$-measurable sets, and $\tilde{\mu} = \mu^* | \sM^*$.
+Let $(X, \sM, \mu)$ be a measure space, $\mu^*$ the outer measure induced by $\mu$ according to $$\mu^*(E) = \inf\left\{\sum_1^\infty\mu(A_j): A_j \in \sA, E \subset \bigcup_1^\infty A_j\right\},$$ and $\sM^*$ the $\sigma$-algebra of $\mu^*$-measurable sets, and $\tilde{\mu} = \mu^* | \sM^*$. If $\mu$ is $\sigma$-finite, then $\tilde{\mu}$ is the completion of $\mu$.
 
-(a) If $\mu$ is $\sigma$-finite, then $\tilde{\mu}$ is the completion of $\mu$.
+## Practice midterm 1
 
-### [@Fo99, number 1.23]
+### Problems to prove
 
-Let $\sA$ be the collection of finite unions of sets of the form $(a,b] \cap \QQ$ with $-\infty \le a\le b \le \infty$. 
+- Let $A$ and $B$ be subsets of $\mathbf{R}$ with $A \subset B$. Using the definition of Lebesgue outer measure, prove the monotonicity property of outer measure, i.e., show $m^*(A) \le m^*(B)$.
+- Let $A \subset \mathbf{R}$ have finite outer measure, and suppose there exist an $F_\sigma$-set $F$ and a $G_\delta$-set $G$ with $F \subset A \subset G$ with $m(F) = m(G)$. Prove that $A$ is Lebesgue measurable.
+- Let $E$ be measurable with $m(E) < \infty$. Prove that for every $\epsilon > 0$ there exists a finite collection of open intervals $\{I_i\}_{i=1}^n$ such that $m(E \Delta (\cup_{i=1}^n I_i)) < \epsilon.$
+- Let $(X, \mathscr{M}, \mu)$ be a measure space, let $\mathscr{M}^*$ be the collection of all $E \subset X$ for which there exist sets $A$ and $B$ in $\mathscr{M}$ such that $A \subset E \subset B$ and $\mu(B \setminus A) = 0$, and define $\mu(E) = \mu(A)$ in this situation. Prove $\mathscr{M}^*$ is a $\sigma$-algebra. 
 
-(a) Knowing "if $\sE$ is an elementary family, the collection $\sA$ of finite disjoint unions of members of $\sE$ is an algebra" we have that $\sA$ is an algebra of $\QQ$.
+### Problems to prove or give a counter example
 
-## Example sheet
+- Let $X$ be an uncountable set, let $\mathscr{M}$ be the collection of all sets $E \subset X$ such that either $E$ or $E^c$ is at most countable. Then $\mathscr{M}$ is a $\sigma$-algebra in $X$.
+- Suppose $F$ is a right-continuous increasing function on $[a,b]$. There is a positive Borel measure $\mu$ on $[a,b]$ for which $F(x) - F(a) = \mu((a,x))$.
 
-\section{Problems to prove}
+## Midterm 1
 
-\begin{description}
+### Problems to prove or give a counter example
 
-\item[Packer] Let $A$ and $B$ be subsets of $\mathbf{R}$ with $A \subset B$. Using the definition of Lebesgue outer measure, prove the monotonicity property of outer measure, i.e., show $m^*(A) \le m^*(B)$.
-\item[Packer] Let $A \subset \mathbf{R}$ have finite outer measure, and suppose there exist an $F_\sigma$-set $F$ and a $G_\delta$-set $G$ with $F \subset A \subset G$ with $m(F) = m(G)$. Prove that $A$ is Lebesgue measurable.
-\item[Packer] Let $E$ be measurable with $m(E) < \infty$. Prove that for every $\epsilon > 0$ there exists a finite collection of open intervals $\{I_i\}_{i=1}^n$ such that $m(E \Delta (\cup_{i=1}^n I_i)) < \epsilon.$
-\item[Rudin] Let $(X, \mathscr{M}, \mu)$ be a measure space, let $\mathscr{M}^*$ be the collection of all $E \subset X$ for which there exist sets $A$ and $B$ in $\mathscr{M}$ such that $A \subset E \subset B$ and $\mu(B \setminus A) = 0$, and define $\mu(E) = \mu(A)$ in this situation. Prove $\mathscr{M}^*$ is a $\sigma$-algebra.
-\end{description}
+- If $F \colon \RR \to \RR$ is a monotone, increasing, right continuous function, and $\mu_F$ is the associated Borel measures on the Borel subsets of $\RR$, then for any bounded Borel subset $B \subset \RR$, $\mu_F(B) < \infty$.
+- If $E$ is a subset of $\RR$, and has outer Lebesgue measure equal to $0$, then $E$ is countable.
 
-\section{Problems to find a counter example or prove}
+### Problems to prove
 
-For each of the following statements, determine whether it is true or false. 
-
-If it is true, prove it. If it is false, give a counterexample (\emph{ein gegenbeispiel}).
-
-\begin{description}
-\item[Packer] If $F \subset [0,1]$ is Lebesgue measurable and $m(F) > 0$, then $F$ contains an open interval.
-\item[Packer] Let $E$ be a subset of $\mathbf{R}$, and let $\chi_E \colon \mathbf{R} \to \{0,1\}$ denote the characteristic function of $E$. If $\chi_E$ is a Lebesgue measurable function, then $E$ is a Lebesgue measurable set.
-\item[Rudin] Let $X$ be an uncountable set, let $\mathscr{M}$ be the collection of all sets $E \subset X$ such that either $E$ or $E^c$ is at most countable. Then $\mathscr{M}$ is a $\sigma$-algebra in $X$.
-\item[Rudin] Suppose $F$ is a right-continuous increasing function on $[a,b]$. There is a positive Borel measure $\mu$ on $[a,b]$ for which $F(x) - F(a) = \mu((a,x))$.
-\end{description}
+- Let $(X, \sM, \mu)$ be a measure space, and let $\{E_n\}_{n=1}^\infty \subset \sM$ be an increasing sequence of measurable subsets of $X$. Prove continuity from below of the measure $\mu$, i.e., prove that $\lim_{k\to \infty} \mu(E_k) = \mu(\cup_{n=1}^\infty E_n)$.
