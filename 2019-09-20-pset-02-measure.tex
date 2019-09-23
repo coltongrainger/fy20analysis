@@ -1,0 +1,177 @@
+\documentclass[onesided]{ccg-pset}
+
+\course{MATH 6310}
+\psnum{1}
+\author{Colton Grainger}
+\date{2019-09-20}
+
+
+\begin{document}
+\maketitle
+
+\begin{defn}[Outer Measure]
+    \label{def:outer_measure}
+    We'll take for granted Royden's characterization \cite{RF10} of the \term{Lebesgue outer measure} of a set $E \subset \R$ as the greatest lower bound of the sum of interval lengths $\sum \ell(I_k)$ taken over the countable covers of $E \subset \cup_{k=1}^\infty I_k$ by open intervals $\set{I_k}$.
+\end{defn}
+
+\begin{defn}[$F_{\sigma}$ sets]
+    \label{defn:_f__sigma_sets}
+    An $F_\sigma$ set is a countable union of closed sets. In particular, in $\R$, the $F_\sigma$ sets are countable unions of closed intervals.%
+        \footnote{%
+        Since every closed set of $\R$ can be written as the complement of countably many disjoint open intervals, by the fact that \term{every open set} of $\R$ is a countable union of disjoint open intervals).
+        }
+\end{defn}
+
+\begin{enumerate}
+\setcounter{enumi}{36}
+
+\item Each open set $U \subset \R$ is an $F_\sigma$ set.
+\begin{proof}
+Take an arbitrary open set $U \subset\R$. 
+Because $\R$ is second countable with a basis given by open intervals with rational endpoints, $U$ is the union of countably many rational balls.
+Consider each rational ball $B$. Because translation and dilation are topological automorphisms of $\R$, if we show that $(0,1)$ is $F_\sigma$, then every rational interval (and also $B$ as the countable union of rational intervals) will have been shown to be $F_\sigma$ too.%
+    \footnote{%
+    For then $(0,1) \mapsto (0,b-a) \mapsto (a,b)$ extends to the composition of one dilation and one translation, both of which are topological automorphisms of $\R$.
+    }
+    
+
+Let 
+\begin{align*}
+    F_0 &= \set{\frac{1}{2}},\\
+    F_1 &= D\paren{\frac{1}{4}, \frac{1}{2}} \qq{$=:$ the closed disk of radius $\frac{1}{4}$ and center $\frac{1}{2}$}\\
+    \vdots\\
+    F_k &= D\paren{\frac{k}{2(k+1)}, \frac{1}{2}} \qq{$=:$ the closed disk of radius $\frac{k}{2(k+1)}$ and center $\frac{1}{2}$}\\
+    \vdots\\
+\end{align*}
+I claim $(0,1) = \cup_{k \ge 0} F_k$. The inclusion $\cup F_k \subset (0,1)$ follows for all $k \ge 0$ because each $F_k \subset (0,1)$ by construction. For the converse inclusion, let $x \in (0,1)$, so that $0 < x< 1$. Let $\bar{x} = \min{\abs{x-1}, \abs{x}}$. By the Archimedean principle, there's a $K \in \N$ such that $\frac{1}{2} - \frac{K}{2(K+1)} = \frac{1}{K} < \bar{x}$. For this $K$, one may verify that $x \in F_K$. We have thus shown each point $x \in (0,1)$ is contained in some $F_K$, which implies $(0,1) \subset \cup_{k\ge 0} F_k$, as desired.
+\end{proof}
+
+\setcounter{enumi}{41}
+
+\item Given. 
+Let $\paren{a_n}$ and $\paren{b_n}$ be sequences of positive real numbers. 
+Say that $\limsup a_n < 0$ or $\limsup b_n < \infty$. Without loss of generality, say $\limsup a_n \le \limsup b_n$.
+
+To prove. The limit superior of the sequence of products $\paren{a_n b_n}$ is at most the product $(\limsup a_n)\cdot(\limsup b_n)$.
+
+\begin{proof}
+Case I. Assume $\limsup a_n < 0$ and $\limsup b_n = \infty$. Let $\limsup a_n = \ell$. We will appeal to the following characterization of the limit superior.
+
+\begin{prop}
+    \label{prop:royden_1_19}
+    For a sequence of real numbers $\paren{a_n}$, the limit superior $\limsup a_n = \ell$ if and only if for all $\epsilon > 0$ infinitely many of the $a_n$ lie in $[\ell - \epsilon, \infty)$ but only finitely many of the $a_n$ lie in $[\ell + \epsilon, \infty)$.
+\end{prop}
+
+    So let $\epsilon > 0$.  By proposition \ref{prop:royden_1_19}, the sequence $\paren{a_n}$ is eventually%
+    \footnote{%
+A sequence is said to \term{eventually} satisfy some property $\sP$ if there exists $N \in \N$ such that for all indices $k \ge N$, the subsequence $(a_k)$ satisfies that property $\sP$.%
+    }%
+    bounded from above by some positive $\mu \in \R_{>0}$. Moreover, unless to contradict \ref{prop:royden_1_19}, that $\limsup b_n = \infty$ implies $\paren{b_n}$ is unbounded. Thence $\paren{\mu b_n}$ is unbounded too. Therefore, as $\ell > 0$, the bound on $(a_k)$ and infinite arithmetic yields
+    \begin{equation*}
+        \limsup a_nb_n \le \limsup \mu b_n = \mu \limsup b_n = \infty = \ell \cdot \infty = \limsup a_n \cdot \limsup b_n
+    \end{equation*}
+    as desired.
+
+    Case II. Notice that if $\limsup \alpha_n = 0$ and $\limsup \beta_n < \infty$, then the order reversing homeomorphism ($\R_{>0} \to \R_{>0}$) $x \mapsto 1/x$ allows us to write $a_n = \beta_n^{-1}$ and $b_n= \alpha_n^{-1}$, which reduces case II to the previous case I.
+
+Case III.  Suppose $\paren{a_n}$ and $\paren{b_n}$ are positive real sequences, such that 
+\begin{equation*}
+    0 < \underbrace{\limsup a_n}_{=:\ell} \le \underbrace{\limsup b_n}_{=:u} < \infty.
+\end{equation*}
+Let $\epsilon > 0$. Then $\ell + \epsilon$ eventually bounds $(a_j)$ for all $j \ge N_a$ and $u + \epsilon$ eventually bounds $(b_k)$ for all $k \ge N_b$. 
+
+    Let $N = \max{N_a, N_b}$. Since 
+\begin{equation*}
+    a_i b_i \le (u + \epsilon)(\ell + \epsilon) \qq{for all $i \ge N$,}
+\end{equation*}
+eventually
+\begin{equation*}
+\limsup a_n b_n \le \limsup a_i b_i \le u\ell + u\epsilon + \epsilon\ell + \epsilon^2.
+\end{equation*}
+
+Passing to the limit as $\epsilon \to 0$ crushes the powers of $\epsilon$, hence 
+\begin{equation*}
+ \limsup a_n b_n  \le u\ell = \limsup a_n \cdot \limsup b_n,
+\end{equation*}
+as desired.
+\end{proof}
+
+\item Given. Let $\paren{a_n}$ be a sequence of real numbers. 
+
+    To prove. There exists a monotone subsequence $\paren{a_{n_i}}$ of $(a_n)$.
+
+\begin{proof}
+    Case I. Say the image of $a_n$, as a set, has a condensation%
+        \footnote{%
+        Or `limit' point, or `accumulation' point. Different words to express the point $x$ with the property that the sequence $x_n \to x$ converges to $x$ but termwise does not attain the limit $x_n \neq x$ for all $n \in \N$.
+        }
+    point $\ell$ in $\RR$. Then all but finitely many of the $a_n$ lie in \[B^*\paren{\ell, 1} := \text{the open, punctured, ball centered at $\ell$ with radius $1$}.\] 
+    Without loss of generality, since it cannot be that finitely many points lie left of center \emph{and} right of center, we say suppose infinitely many of the $a_n$ lie right of center in $(\ell, \ell + 1)$. Let $v_0$ be one such point in the image of the $a_n$ within $(\ell, \ell+1)$. Let $\epsilon_0 = v_0 - \ell_0$. By assumption that $\ell$ is a condensation point of the image of $a_n$, the new open ball $(\ell, \ell + \epsilon_0)$ again meets infinitely many of the $a_n$, but not $v_0$. Let $v_1$ be one such of the $a_n$ in $(\ell, \ell + \epsilon_0)$, and let $\epsilon_1 = \ell - v_1$. Note $v_1 < v_0$ as $v_1 \in (\ell, \ell + \epsilon_0) = (\ell, v_0)$. Inducting on $i \ge 0$, assume 
+    \begin{equation*}
+        v_0, v_1, v_2, \ldots, v_i \qq{is a monotone (w.l.o.g.) descreasing sequence}
+    \end{equation*}
+    of the infinitely many $a_n$ in $(\ell, \ell + 1)$. We find $v_{i+1} < v_i$, by choosing $v_{i+1} < \ell + \epsilon_i = v_i$, because the image of $a_n$ meets $(\ell,\ell+\epsilon_i)$ by assumption that $\ell$ is a condensation point of the image of the $a_n$ in $\R$. (Else $B^*_{\epsilon_i}(\ell)$ would contain finitely many of the $a_n$, contrary to the ``open sets'' characterization of condensation points.) This completes the inductive step. By induction, we have constructed a monotone decreasing subsequence $(v_i)$ chosen from the $a_n$.
+
+    Case II. Say the image of $(a_n)$ has no condensation point in $\R$, but $(a_n)$ does have a constant subsequence. Then we are done, for the constant subsequence is trivially monotone.
+
+    Case III. Say the image of $(a_n)$ has no condensation point in $\R$, and further suppose that $(a_n)$ has no constant subsequence. Then $a_n)$ attains in value in its image at most finitely many times, and we may re-index for all $i$ such that $(a_{n_i})$ is injective and has infinite image in $\R$. By assumption that $(a_n)$ has no condensation point, neither does the subsequence $(a_{n_i})$ have a condensation point.
+
+    Apply the axiom of countable choice to start with a vertex $v_0$. Then (w.l.o.g.) infinitely many of the $a_{n_i}$ lie in $(v_0, \infty)$, else the image of the $a_{n_i}$ would be the union of the two finite subsets of the $a_{n_i}$ at most $v_0$ and the $a_{n_i}$ at least $v_0$. Let $v_1$ be the least of the $a_{n_i}$ to meet $(v_0, \infty)$, where the minimum exists because the image of the $a_{n_i}$ has no limit point in $\R$. 
+
+    Inducting on $j \ge 0$, suppose 
+    \begin{equation*}
+        v_0, v_1, \ldots, v_j \qq{is a finite monotone (w.l.o.g.) increasing subsequence}
+    \end{equation*}
+     of the $a_{n_i}$ chosen such that each $v_k$ for $0 \le k \le j$ was the least of the $a_{n_i}$ to meet $(v_{k-1}, \infty)$. 
+
+    Then choose $v_{j+1}$ the least of the $a_{n_i}$ in $(v_j, \infty)$, which is possible because (i) $a_{n_i}$ has no condensation point in $\R$, and (ii) the image of the $a_{n_i}$ in $\R$ is infinite. If such a choice of $v_{j+1}$ was not possible, then the image of $a_{n_i}$ would be the union of three finite sets, 
+    \begin{equation*}
+        \bkt{\Im (a_{n_i}) \cap (-\infty, v_0)} \sqcup \set{v_0, \ldots, v_j} \sqcup \bkt{\Im (a_{n_i}) \cap (v_j, \infty)}
+    \end{equation*}
+    contrary to claim (ii). Since $v_{j+1} \in (v_j, \infty)$, we know $v_{j+1} > v_j$, which completes the inductive step.
+\end{proof}
+    \begin{note}[]
+        We have exhausted cases to show that any sequence of real numbers has a monotone subsequence. Our proof relied on a style of contradiction developed in K\"onig's infinity lemma (1927). Our proof moreover demonstrates that any sequence of points in a totally bounded and complete subset of $\R$ contains a convergent subsequence, as we have just shown it contains a monotone subsequence that is bounded. The Monotonic Convergence Theorem then guarantees this monotone subsequence has a limit, and completeness of the bounded set guarantees this limit is achieved. (The Monotonic Convergence Theorem is equivalent to the Axiom of Completeness, and to the Heine-Borel Theorem, and to the Finite Intersection Property for the real numbers.)
+    \end{note}
+
+\setcounter{enumi}{7}
+\item The outer measure of a finite open cover of the set $D = [0,1] \cap \Q$ has Lebesgue outer measure $1$.
+\begin{proof}
+    Let $\set{ I_k }_{k=1}^n$ be a finite open cover of $D$. We will bound the outer measure $\sum \mu^*\paren{I_k}$ from below by the Riemann-Stieltjes upper integral $\bar\int_0^1 \chi_D$, where $\chi_D \colon [0,1] \to \set{0,1}$ is the indicator function for $D$ in $[0,1]$. 
+
+    Because the rational numbers are dense in $[0,1]$, it is straightforwards to see that each block of any finite partition of $[0,1]$ meets the preimage $\chi^{-1}_D(1) = D = \Q \cap [0,1]$. By inspection of the definition of the Riemann-Stieltjes integral, it follows that therefore the supremum (taken over selections of points $\chi_k$ in the blocks of the partition) of the lengths of the (finitely many, disjoint) intervals partitioning $[0,1]$ is $1$.
+
+    That has all been to argue the upper Riemann integral of $\chi_D$ is 
+    \begin{equation*}
+        1 = \bar\int_0^1 \chi_D  = \inf\set{\sum_{j=1}^m \ell(J_j) : [0,1] \subset \bigcup_{j=1}^m J_j} 
+    \end{equation*}
+    We now argue for the inequality 
+    \begin{equation}
+        \label{riemannupper}
+        \inf\set{\sum_{j=1}^m \ell(J_j) : [0,1] \subset \bigcup_{j=1}^m J_k} \le \sum_{k=1}^n\mu^*(I_k)
+    \end{equation}
+    First I claim our finite open cover $\set{I_k}$ of $D$ by open balls has a refinement into disjoint open balls (wlog, suppose these are increasingly ordered). Such a disjoint refinement is possible because the candidates for the endpoints of this refinement (i.e. the endpoints of open intervals $\set{\tilde I_k}$ such that $\tilde I_k \subset I_k$ for all $k$) is the dense set of irrational numbers in $[0,1]$. So suppose this refinement $\set{\tilde I_k}$ has been obtained. Now make a further modification to the $\set{\tilde I_k}$ by removing $0$ and $1$ from $\tilde I_1$ and $\tilde I_k$, that is, let
+    \begin{align*}
+        J_0 &= I_1 \setminus \{x \ge 0\}\\
+        J_1 &= I_1 \setminus \{x  < 0\}\\
+        J_k &= I_k \qq{for all $2 \ge k \ge n-1$}\\
+        J_n &= I_n \setminus \{x  < 1\}\\
+        J_{n+1} &= I_{n+1} \setminus \{x  \ge 1\}.
+    \end{align*}
+    Note that $J_0 \sqcup J_1 = I_1 \setminus \{0\}$ and $J_k \sqcup J_{k+1} \setminus \{1\}$.
+    Because the Lebesgue outer measure of an interval $I$ is the length of that interval, the outer measure of the disjoint union of the $J_j$ is equal to the outer measure of the disjoint union of the refinement $\tilde I_k$, which, by monotonicity, is at most the sum of the outer measures of the original finite cover $\set{I_k}$, ie,
+    \begin{equation}
+        \label{bound}
+        \sum\limits_{j=0}^{n+1}\ell(J_j) = \sum\limits_{j=0}^{n+1}\mu^*(J_j) = \sum\limits_{k=1}^{n} \mu^*(\tilde I_k) \le \sum\limits_{k=1}^{n}\mu^*(I_k).
+    \end{equation}
+    Taking the infimum over the possible finite open covers of $D$, the left most term in equation \eqref{bound} is exactly the infimum in the left hand side of the equation \ref{riemannupper}, which is the value of Riemann-Stieljies upper integral of $\chi_D$, which is $1$, as desired.
+\end{proof}
+\item Let $\Omega = 2^\R$ be our $\sigma$-algebra, and suppose the Lebesgue outer measure of $A \in \Omega$ is $0$. Then for any $B \in \Omega$, we have $\mu^*(A\cup B) = \mu^*(B)$.
+    \begin{proof}
+        If $A = \emptyset$ or if $A \cup B = B$ we are finished. So suppose not, i.e., suppose that $A \not\subset B$. Then $B \subset A \cup B$ implies $\mu^*(B) \le \mu^*(A \cup B)$ by monotonicity. But subadditivity forces $\mu^*(A \cup B) \le \mu^*(A) + \mu^*(B) \le \mu^*(B)$. Having weak inequalities in both directions, we conclude $\mu^*(A \cup B) = \mu^*(B)$.
+    \end{proof}
+\end{enumerate}
+
+\bibliography{/home/colton/coltongrainger.bib}
+\bibliographystyle{alpha}
+\end{document}

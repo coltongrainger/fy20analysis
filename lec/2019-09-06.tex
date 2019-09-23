@@ -1,0 +1,139 @@
+\begin{thm}[Sequences and limits]
+    \label{thm:sequences_and_limits}
+    If $a_n \to a$ is a convergence sequence of real numbers, then the limit $a$ is unique and there's an $M > 0$ such that the $a_i$ lie in $\bkt{-M, M}$. Moreover, if the $a_i$ are bounded above by some constant $c$, then the limit $a \le c$.
+\end{thm}
+
+\begin{thm}[Monotone convergence theorem]
+    \label{thm:monotone_convergence_theorem}
+    Suppose that $a_i$ is a sequence of real numbers and $a_{n-1} \le a_n$ for all $n \in \N$. Then $a_n$ converges if and only if $a_n$ is bounded.
+\end{thm}
+
+\begin{proof}
+See the previous theorem. For the converse, consider that if $a = \sup a_n$ then for all $\epsilon > 0$ there's a $n \in \N$ such that $a - \epsilon < a_n \le a$.
+\end{proof}
+
+\begin{thm}[Bolzano Weierstrauss]
+    \label{thm:bolzano_weierstrauss}
+    Every bounded sequence $a_n$ of reals has a convergence subsequence.
+\end{thm}
+
+\begin{proof}
+We need to construct a subsequence of $a_n$, say $b_k$, choosing indices
+\begin{equation*}
+    n_1 \le n_2 \le \ldots \qq{and defining} b_k := a_{n_k}.
+\end{equation*}
+    Consider the closed sets $E_n = \cl \set{a_n, a_{n+1}, \ldots}$. They're nested, bounded, and nonempty. Hence there's an $x \in \cap E_n$ which is a point of closure for every $\set{a_n, a_{n+1}, \ldots}$. Then $b_k \to x$.
+\end{proof}
+
+\begin{defn}[Cauchy Sequence]
+    \label{defn:cauchy_sequence}
+    A sequence of points $a_n$ in a metric space $X$ is said to be a \term{Cauchy sequence} if for all $\epsilon > 0$, there's an index $N \in \N$ such that for all indices $m,n > N$, the distance $d(a_m, a_n) < \epsilon$.
+\end{defn}
+
+\begin{thm}[Cauchy Criterion for $\R$]
+    \label{thm:cauchy_criterion_for_r_}
+    Suppose that $a_n \to a$ is a convergence sequence. Then for all $\epsilon > 0$ there's an index $N$ such that $\abs{a_n - a} < \epsilon/2$. Thence for all $n,m > N$ we have $\abs{a_n - a_m} \le \abs{a_n - a} + \abs{a_m - a}$.
+
+    Conversely, if a sequence $a_n$ is Cauchy, then we may take $1> 0$ and $N \in \N$ such that $\abs{a_n - a_m} < 1$. So let $M = \max{\abs{a_k} : k \le N} + 1$ as the bound. \TODO
+\end{thm}
+
+\begin{defn}[Infinite Limits]
+    \label{defn:infinite_limits}
+    Write $\lim a_n = \infty$ if for each real number $\kappa$ there's an index $N \in \N$ such that $a_n \ge \kappa$ when $n > N$.
+    Write $\lim a_n = -\infty$ if $\lim -a_n = \infty$.
+\end{defn}
+
+\begin{defn}[Limit superior and inferior]
+    \label{defn:limit_sup}
+    The limit supremum (of a sequence is given by 
+    \begin{equation*}
+        \lim_{n \to \infty} \sup \set{a_k : k \ge n}.
+    \end{equation*}
+    The limit inferior of a sequence is given by 
+    \begin{equation*}
+        \lim_{n \to \infty} \inf \set{a_k : k \ge n}.
+    \end{equation*}
+    Note that $\sup \set{a_k : k \ge n}$ is a decreasing (if existent at all) sequence of reals, and that $\inf \set{a_k : k \ge n}$ is a increasing (if existent at all) sequence of reals, both in the index $k \in \N$.
+\end{defn}
+
+\begin{prop}[Bounding Limit Superiors]
+    \label{prop:bounding_limit_superiors}
+    \begin{equation*}
+        \limsup a_n = \infty \qq{if and only if} \set{a_n}_{n\in \N} \qq{is not bounded above.}
+    \end{equation*}
+\end{prop}
+
+\begin{thm}[Perturbations to the limit superior]
+    \label{thm:perturbations_to_the_limit_superior}
+    Suppose $\limsup a_n = l$. Then for all radii $\epsilon > 0$ finitely many terms of the sequence $a_n$ lie above $l + \epsilon$ and also infinitely (\TODO all but finitely) many of the terms lie above $l + \epsilon$.
+\end{thm}
+\begin{proof}
+\TODO
+\end{proof}
+
+\begin{prop}[Properties of the limit superior]
+    \label{prop:properties_of_the_limit_superior}
+    \begin{enumerate}
+\item $\limsup a_n = - \liminf (-a_n)$. 
+\item The sequence converges $a_n \to a$ if and only if $\limsup a_n  = \liminf a_n$.
+\item $\liminf a_n \le \limsup a_n$.
+\item If $a_n \le b_n$ are ordered as terms in the sequences $\set{a_i}_{i \in \N}$ and $\set{b_i}_{i \in \N}$, then the respective limit superiors are ordered as well: $\limsup a_i \le \limsup b_i$.
+    \end{enumerate}
+\end{prop}
+
+\begin{defn}[Partial Sums]
+    \label{defn:partial_sums}
+    Suppose that $\set{a_k}$ is a sequence of elements of a metric space with additive structure (\TODO). Let 
+    \begin{equation*}
+        S_n = \sum\limits_{k=1}^{n}a_k
+    \end{equation*}
+    denote the $n$th partial sum of the series $\sum\limits_{1}^{\infty}a_k$. We say that 
+$\sum\limits_{1}^{\infty}a_k$ is \term{summable} if the $S_n \to S$ converges. 
+\end{defn}
+
+\begin{thm}[Summable series]
+    \label{thm:summable_series}
+    \begin{enumerate}
+        \item $\sum a_k$ is summable if and only if for all $\epsilon > 0$, there's a index $N \in \N$ such that for all $m \in \N$ we have \TODO.
+            \item \TODO
+                \item \TODO
+    \end{enumerate}
+\end{thm}
+
+\begin{defn}[Continuous real valued functions from a subset of the real numbers]
+    \label{defn:continuous_functions}
+    We say that $f \colon E \to \R$ is continuous if 
+    \begin{equation*}
+        \forall \epsilon > 0 \exists \delta > 0 \qq{such that} y \in E \qq{and} \abs{y - x} < \delta \implies \abs{f(y) - f(x)} < \epsilon.
+    \end{equation*}
+\end{defn}
+
+\begin{thm}[Sequentially continuous characterization]
+    \label{thm:sequentially_continuous_characterization}
+    The function $f \colon E \to \R$ is continuous at the point $x_0 \in E$ if and only if for all sequences $x_n \to x_0$ lying in $E \supset x_n$ we have $f(x_n) \to f(x_0)$.
+\end{thm}
+\begin{proof}
+\TODO
+Conversely, that $f$ is not continuous at $x_0$. Then 
+\begin{equation*}
+    \exists \epsilon > 0 \forall \delta, \qq{e.g., $\delta_k = 1/k$,} \exists x_k \in E \qq{such that} \abs{x_0 - x_k}< \delta \qq{but} \abs{f(x_0) - f(x_k)} > \epsilon.
+\end{equation*}
+\TODO
+\end{proof}
+
+\begin{defn}[Relatively open]
+    \label{defn:relatively_open}
+    \TODO
+\end{defn}
+
+\begin{thm}[Continuity by pull-backs]
+    \label{thm:continuity_by_pull_backs}
+    A function $f \colon E \to \R$ is continuous if and only if for all $U \subset \R$, the pullback $f^{-1}(U) \subset E$ is relatively open.
+\end{thm}
+
+\begin{proof}
+    We prove the converse first. Let $x \in E$. Say $I = (f(x) - \epsilon, f(x) + \epsilon)$. Then $f^{-1}(I)$ is relatively open, so $f^{-1}(I) = E \cap O$ for $O \subset \R$ open. Taking open balls as a basis for the standard topology, there's a $\delta > 0$ such that $x \in B_\delta(x) \subset 0$. Hence if $y$ is within $\delta$ of $x$, then $y \in E$.
+
+    In the other direction, say that $f$ is continuous. Let $O \subset \R$ be an open subset of the reals. Let $x \in f^{-1}(U)$ lie in the 
+    . Then $f(x) \in U$.
+\end{proof}

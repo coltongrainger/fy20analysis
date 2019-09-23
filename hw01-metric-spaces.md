@@ -9,15 +9,6 @@ bibliography: /home/colton/pro/19/prelims.bib
 
 \newcommand{\ball}[2]{B_{#1}\left( #2 \right)}
 \newcommand{\card}[1]{\mathrm{card}\left( #1 \right)}
-\newcommand{\eps}{\varepsilon}
-\newcommand{\RR}{\mathbf{R}}
-\newcommand{\NN}{\mathbf{N}}
-\newcommand{\sA}{\mathscr{A}}
-\newcommand{\sB}{\mathscr{B}}
-\newcommand{\sE}{\mathscr{E}}
-\newcommand{\sM}{\mathscr{M}}
-\newcommand{\sP}{\mathscr{P}}
-\newcommand{\sR}{\mathscr{R}}
 
 ### Open balls in metric spaces
 

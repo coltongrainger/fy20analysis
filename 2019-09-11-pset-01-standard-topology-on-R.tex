@@ -1,0 +1,94 @@
+\documentclass[onesided]{ccg-pset}
+
+\course{MATH 6310}
+\psnum{1}
+\author{Colton Grainger}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{defn}[Open sets]
+    \label{defn:open_sets}
+    A set $U$ is open in $\R$ if for each point $x$ of $U$ there exists an open ball $B_\epsilon(x) := (x-\epsilon, x+ \epsilon)$ such that  $x \in B_\epsilon(x) \subset U$.
+\end{defn}
+
+\begin{defn}[Limit/Accumulation points]
+    \label{defn:limit_points}
+    A point $x$ is called an \term{limit point} (equivalently, an \term{accumulation point}) of $E \subset \R$ if for every open set $U$ containing $x$, the intersection $(U\setminus \set{x}) \cap E$ is non-empty.
+\end{defn}
+
+\begin{defn}[Isolated points]
+    \label{defn:isolated_points}
+    A point $x \in E$ is called  an \term{isolated point} of $E$ if there exists an open set $U$ containing $x$ such that $U \cap E\setminus\{x\}$ is empty.
+\end{defn}
+
+\begin{defn}[Adherent points]
+    \label{defn:adherent_points}
+    A point $x$ is called  an \term{adherent point} of $E$ if $x$ is either a limit point of $E$ or an isolated point of $E$.
+\end{defn}
+
+\begin{defn}[Closed sets]
+    \label{defn:closed_sets}
+    A set $E$ is \term{closed} in $\R$ if it contains all of its accumulation points.
+\end{defn}
+
+\begin{thm}[Closed sets are complements]
+    \label{thm:open_complements_are_closed}
+    A set $E$ is closed in $\R$ if and only if $E^c$ is open.
+\end{thm}
+
+\begin{defn}[Closure]
+    \label{defn:closure}
+    The closure $\cl(E)$ of $E$ in $\R$ is the intersection of all the closed sets containing $E$.
+\end{defn}
+
+\begin{defn}[Dense in $\R$]
+    \label{defn:dense_in_r_}
+    A set $E$ is \term{dense} in $\R$ if its closure $\cl(E) = \R$ is the entire space.
+\end{defn}
+
+\begin{enumerate}
+    \setcounter{enumi}{29}
+\item To prove.
+        \begin{enumerate}
+            \item The set $E'$ of limit points of $E$ is a closed set.
+            \item $\cl(E) = E' \cup E$.
+        \end{enumerate}
+        \begin{proof}
+
+        \begin{enumerate}
+            \item Let $x \in (E')^c$, the complement of the set of limit points. That $x \not\in E'$ implie, by \ref{defn:limit_points}, there's an open $U$ containing $x$ such that $U \cap E\setminus\set{x}$ is empty. Hence $(E')^c$ can be written as the union of open sets, and is open in $\R$. By \ref{thm:open_complements_are_closed}, $E'$ is closed.
+            \item For the inclusion $E' \cup E \subset \cl(E)$, take $x \in E'$ (since if $x \in E \subset \cl(E)$ we are done). Then let $K \supset E$ be a closed set subsuming $E$. By \ref{defn:limit_points}, each open $U \ni x$ meets $E\setminus\set{x}$ nontrivially, so meets $K \setminus\set{x}$ nontrivially. As $K$ is closed, by \ref{defn:closed_sets}, $x \in K$. 
+
+                For the inclusion $\cl(E) \subset E' \cup E$, we show the contrapositive. Let $x \notin E \cap E'$. Then there's an open set $U \ni x$ that misses $E$. Thence $x \notin U^c$, a closed set, which is a witness to the fact that $x \notin \cl(E)$. 
+        \end{enumerate}
+        \end{proof}
+
+    \item To prove. If $E$ is a set of isolated points of $E$, then $E$ is countable.
+        \begin{proof}
+            Consider that $\Q$ is dense in $\R$, and that $\Q$ is countable. Let $U$ be open in $\R$. Let $x \in U$. Then by definition \ref{defn:open_sets} there's a ball $B_\epsilon$ containing $x$. By density of $\Q$ in $\R$, we may choose two rational numbers between $x-\epsilon < x < x + \epsilon$, we obtain a rational ball $B_r$ such that $x \in B_r \subset B_\epsilon$. Thence the rational balls form a countable basis for the standard topology on $\R$. Thence $E$ may be covered by countably many rational balls, such that one rational ball contains exactly one unique point of $E$. So $E$ is enumerated.
+        \end{proof}
+
+    \item To prove.
+        \begin{enumerate}
+            \item   $E$ is open if and only if $E = \int E$.
+            \item $E$ is dense in $\R$ if and only if $\int(\R \setminus E) = \emptyset$.
+        \end{enumerate}
+
+        \begin{defn}[Interior point]
+            \label{defn:interior_point}
+            Given a set $E$, we say that $x$ is an \term{interior point} of $E$ if there's an open ball centered around $x$ contained in $E$.
+        \end{defn}
+        \begin{proof}
+        \begin{enumerate}
+            \item First, suppose $E$ is open. Let $x \in E$. By definition \ref{defn:open_sets} there's a ball $x \in B \subset E$. So $x \in \int E$ by definition \ref{defn:interior_point}. Conversely, let $x \notin E$, which immediately implies that $x \notin \int E$. So $E$ is open implies that $E = \int E$.
+
+                Second, suppose $\int E = E$. Then by definition \ref{defn:interior_point}, for each $x \in E$, there's an open ball containing $x$ in $E$.  So $E$ is open. (Let me know if I am using the wrong definition of open. This argument is certainly circular.)
+
+            \item Say $E$ is dense in $\R$. Then the closure of $E$ is $\R$. So any $x \in \R$ is an adherent point of $E$. So the interior of $E^c$ is $\R^c = \emptyset$. Conversely, say $\int(\R \setminus E) = \emptyset$. Then any $x \in \R \setminus E$ is not an interior point. So $x$ is an adherent point of $E$ in $\R$. So $\cl E = \R$. So $E$ is dense in $\R$.
+        \end{enumerate}
+        \end{proof}
+\end{enumerate}
+
+\end{document}
