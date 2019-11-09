@@ -1,0 +1,92 @@
+\documentclass[onesided]{ccg-pset}
+
+\course{MATH 6310}
+\psnum{3}
+\author{Colton Grainger}
+\date{\today}
+
+\newcommand{\sB}{\mathscr{B}} 
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\setcounter{enumi}{16}
+
+\item \emph{Note.} I have interpreted problem 2.17 from \cite{RF10} as an allusion to the \term{inner regularity} property
+\begin{equation*}
+    m(E) =\sup \{ \mu(K): K \subset E, \hbox{ compact} \}
+\end{equation*}
+and the \term{outer regularity} property
+\begin{equation*}
+    m(E)=\inf\{\mu(U): E \subset U,\hbox{ open}\} 
+\end{equation*}
+for the Lebesgue measure. ``Combined with the fact that $m$ is locally finite, this implies that the Lebesgue measure $m$ is a Radon measure.''%
+    \footnote{%
+    \url{https://terrytao.wordpress.com/2009/01/01/245b-notes-0-a-quick-review-of-measure-and-integration-theory}
+    }
+
+\begin{prop*}[]
+    \label{prop:17}
+    Let $m \colon \sM \to [0,\infty]$ be the complete Lebesgue measure on $\R$ associated to the identity function $\R \xrightarrow{\id} \R$. A set $E \subset \R$ is Lebesgue measurable iff for each $\epsilon > 0$ there's a compact set $K$ and an open set $U$ such that 
+    \begin{equation}
+        \label{closed-open-approx}
+        K \subset E \subset U \qq{and} m(U \setminus K) < \epsilon.
+    \end{equation}
+\end{prop*}
+
+\begin{proof}
+
+\end{proof}
+
+\item \emph{Note.}
+    I have interpreted problem 2.18 from \cite{RF10} as a suggestion to verify Littlewood's first principle, by taking for granted
+    (i) Carathéodory's extension theorem,
+    (ii) the fact that \cite{Fol99} if $F \colon \R \to \R$ is any increasing, right continuous function, there is a unique Borel measure $\mu_F$ on $\R$ such that $\mu_F \paren{\{x \in \R:a< x\le b\}} = F(b) - F(a)$ for all $a,b \in \R$, and
+    (iii) the knowledge that the completion of the Borel measure $\mu_F$ is the Lebesgue-Stieltjes measure associated to $F$, whose domain is the collection $\sM_F$ (or $\mathfrak{M}$ in the notation of \cite{RF10}) of Lebesgue measurable sets.
+
+\begin{prop*}
+    \label{prop:18}
+    Suppose $\mu \colon \sM \to [0,\infty]$ is a complete Lebesgue-Stieltjes measure on $\R$ associated to an increasing, right continuous function $F$. If $E \subset \R$ has \emph{finite} measure with respect to $\mu$, then $E$ can be approximated by 
+    \begin{enumerate}
+        \item $E = V\setminus N_1$ where $V$ is a $G_\delta$ set and $\mu(N_1) = 0$, and
+        \item $E = H \cup N_2$ where $H$ is an $F_\sigma$ set and $\mu(N_2) = 0$.
+    \end{enumerate} 
+\end{prop*}
+
+\begin{proof}
+    
+\end{proof}
+
+\setcounter{enumi}{23}
+\item \emph{To prove.} If $A$ and $B$ are Lebesgue measurable sets, then $m(A \cup B) + m(A \cap B) = m(A) + m(B)$.
+\begin{proof}
+
+\end{proof}
+
+\setcounter{enumi}{38}
+\item  \emph{Given.} Let $F$ be the subset of $\bkt{0,1}$ constructed in the same manner as the Cantor set%
+    \footnote{%
+    Hence $F$ is to be called a \term{generalized Cantor set}.
+    }
+except that each of the intervals removed at the $n$th deletion stage has length $\alpha3^{-n}$ with $0 < \alpha < 1$. 
+\begin{prop*}[]
+    \label{prop:39}\hfill
+    \begin{enumerate}
+        \item $F$ is closed in $\R$
+        \item $\bkt{0,1} \setminus F$ is dense in $[0,1]$
+        \item the Lebesgue measure of $F$ is computed $m(F) = 1 - \alpha$.
+    \end{enumerate}
+\end{prop*}
+\begin{proof}
+
+\end{proof}
+
+\item \emph{To prove.} There is an open set of real numbers that has boundary of positive measure, namely $\Cl([0,1] \setminus F) \cap F$.
+\begin{proof}
+
+\end{proof}
+\end{enumerate}
+
+\bibliography{/home/colton/coltongrainger.bib}
+\bibliographystyle{alpha}
+\end{document}

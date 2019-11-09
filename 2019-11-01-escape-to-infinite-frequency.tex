@@ -1,0 +1,48 @@
+\documentclass[onesided]{ccg-pset}
+
+\course{MATH 6310}
+\psnum{(REVISION TO PROBLEM 6 MIDTERM 1)}
+\author{Colton Grainger}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item[6] (``Escape to infinite frequency'') Consider the real line as a locally compact topological space with the Lebesgue measure: $(\R, \sM, \mu)$. If some function $f \colon \R \to \R$ is an absolutely integrable, then 
+\begin{equation}
+    \label{escape-to-infinite-frequency}
+    \lim_{n\to\infty} \int_\R f(x)\cos(nx)\dd{x} = 0.
+\end{equation}
+
+\begin{proof}
+We proved in lecture (more or less) that compactly supported piecewise constant functions are dense in 
+\[L^1(\R):=\set{\text{absolutely integrable functions $\R \to \R$}}/\sim \qq{where} f \sim g \text{ iff } \int_\R(f-g) = 0.\] 
+This density provides an approximation of $f$ with a sequence of compactly supported piecewise constant functions
+\[
+\set{h_m \colon \R \to \R}_{m  \in \N}
+\]
+such that 
+
+\begin{enumerate}
+\item the support of each $h_m$ contained in the closed interval $F_m :=[-2\pi m,2\pi m]$,
+\item $\abs{h_m} \le \abs{f}$ for all $m \in \N$, and
+\item the $h_m$ converge to $f$ in $L^1$, i.e.,
+\begin{equation}
+    \label{norm-zero}
+    \int_\R (f - h_m) \dd{x} =: \norm{f - h_m}_1 \to 0 \qq{as} m \to \infty
+\end{equation}
+\end{enumerate}
+
+Note that the $F_m$ have finite Lebesgue measure and have union $\cup_m F_m = \R$. Moreover, because $f \in L^1(\R)$ is finite a.e., the approximations $h_m$ are finite a.e. as well. 
+
+To prove \eqref{escape-to-infinite-frequency}, by application of the approximation in \eqref{norm-zero} it suffices to fix $m \in \N$ and show that the product \[g_{n,m} \colon \R \to \R \qq{defined by} g_{m,n}(x) = h_m(x)\cos(nx)\] satisfies
+\[
+    \lim_{n\to\infty} \int_{F_m} g_{m,n} = 0.
+\]
+So fix $m \in \N$. Suppose for contradiction that $\lim_{n\to\infty} \int_\R g_{m,n} > 0$. Then we can decompose $h_m$ into countably many orthogonal components such that $\abs{h(x)} \ge \sum \abs{c_n \cos(nx)}$, where $c_n = \int_{F_m} g_{m,n}$. Because each $\cos(nx)$ is supported in $F_m$ on a set of fixed positive measure (namely $\frac{1}{2}m(F_m)$), if $c_n \not\to 0$ then $h_m \not\in L^1$, which is absurd, as $\abs{f} \ge \abs{h_m}$. The proposition follows.
+\end{proof}
+
+\end{enumerate}
+
+\end{document}

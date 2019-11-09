@@ -1,0 +1,166 @@
+\documentclass[onesided]{ccg-pset}
+
+\course{MATH 6310}
+\psnum{4--6}
+\author{Colton Grainger}
+\date{\today}
+
+\renewcommand{\sM}{\mathfrak{M}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor} 
+\renewcommand{\id}[1]{\mathbf{1}_{ #1 }}
+
+\begin{document}
+\maketitle
+
+These problems are set from \cite{RF10}, Chapters 3 and 4.
+
+\section*{Chapter 3}
+\begin{enumerate}
+\item[3.1] If $f, g \colon \bkt{a,b} \to \R$ are continuous functions such that $f(x) = g(x)$ at almost every $x \in [a,b]$, then $f$ is identically $g$.
+
+\begin{proof}
+Define $h \colon \bkt{a,b} \to \R$ by $h = f - g$ pointwise. Then $h$ is continuous and measurable.%
+    \footnote{%
+    Linear combinations of continuous functions $[a,b] \to \R$ remain continuous, and so also with linear combinations of measurable functions $[a,b] \to \R$.
+    }
+Our hypothesis is that $h$ is supported on a subset of $[a,b]$ with measure $0$, i.e.,
+\begin{equation*}
+    m\paren{h^{-1}(\R\setminus\set{0})} = 0
+\end{equation*}
+Because $h$ is continuous from $[a,b]$ to $\R$, the support of $h$ (which is the inverse image of $\R\setminus\set{0}$ under $h$) is of the form $U \cap [a,b]$ for some open $U \subset \R$. 
+
+To show $f$ is identically $g$ on $[a,b]$, we argue $h$ is identically $0$ on $[a,b]$ by way of contradiction. So say there's a point $x$ in the support of $h$, i.e., suppose $x \in U \cap \bkt{a,b}$. Because $x \in U$, there's $\epsilon > 0$ such that the ball $B_\epsilon(x) \subset U$. Because $x \in \bkt{a,b}$ and the radius $\epsilon$ is strictly greater than $0$, there's some nondegenerate interval $B_\epsilon(x) \cap [a,b]$ in the support of $h$. But $B_\epsilon(x) \cap [a,b]$ is a nondegenerate interval with positive measure. 
+Because \[B_\epsilon(x) \cap [a,b] \subset h^{-1}(\R\setminus\set{0}),\] monotonicity forces
+\begin{equation*}
+    0 < m(B_\epsilon(x) \cap [a,b]) \le m(h^{-1}(\R\setminus\set{0})),
+\end{equation*}
+a contradiction.
+\end{proof}
+
+\begin{note}[Is a similar assertion true if the closed interval is replaced by a more general measurable set?]
+    If we modify the domain $\bkt{a,b} \subset \R$ of the continuous functions in the problem above to $D$ such that there's a null set $N \subset D$ that is positively separated \[\mathrm{dist}(N, A) > 0 \qq{from any subset $A \subset D$ of positive measure} m(A) > 0\] then that $f,g \colon D \to \bkt{-\infty, \infty}$ are continuous functions with $f = g$ at almost every $x \in D$ does not imply $f = g$ identically on $D$. A trivial example: $D_1 = \Q$ is a domain with no subsets of positive measure. Less trivially, \[D_2 = (\Q \cap [0,1]) \cup \bkt{1,2}\] contains a subset \[N = [0,1/2]\cap \Q\] that is positively separated (by a distance of $1/2$) from each subset of $D_2$ with positive measure.
+\end{note}
+
+\item[3.5] Suppose $E \subset \R$ is a Lebesgue measurable subset of $\R$, i.e., $E \in \sM$. Let $f \colon  E \to [-\infty, \infty]$ be a function with the property that for each $q \in \Q$ the set $f^{-1}((q,\infty]) = \set{x \in E : f(x) > q}$ is measurable. Then $f$ is measurable.
+
+
+\begin{proof}
+Let $(E, \sM_E)$ be the $\sigma$-algebra on $E \subset \R$ induced by the Lebesgue $\sigma$-algebra on $\R$. 
+Recall that if \[f^{-1}((\alpha, \infty]) \in \sM_E \qq{for each real} \alpha,\] then $f$ is measurable. 
+By the density of the rationals in $\R$, there is a sequence of rational $\set{q_n}_{n\in\N}$ converging to $\alpha$ from above: 
+\begin{equation*}
+    q_n > \alpha \qq{for all $n \in \N$ and} q_n \searrow \alpha.
+\end{equation*}
+
+Because $\sM_E$ is closed under countable unions and because inverse images commute with unions, 
+\begin{equation*}
+    f^{-1}(\left(\alpha, \infty\right]) = f^{-1} \bigg( \bigcup_{n \in \N} \left(q_n, \infty\right] \bigg)= \bigcup_{n \in \N} f^{-1} \big( \left(q_n, \infty\right] \big) \in \sM_E,
+\end{equation*}
+and the claim follows.
+\end{proof}
+
+\item[3.12] If $E \subset \R$ is a Lebesgue measurable subset of real numbers, on which is defined a bounded measurable function $f \colon (-b,b) \to \R$ for some real $b>0$, then there exists two uniformly convergent sequences of simple functions \[\set{\phi_n}_{n \in \N} \qq{and} \set{\psi_n}_{n \in \N}\] such that 
+\begin{equation*}
+   \phi_n \nearrow f \qq{and} \psi_n \searrow f  \qq{uniformly on $E$ as $n \to \infty$.}
+\end{equation*}
+
+\begin{proof}
+Put $g\colon E \to [0,2b]$ as the measurable translation of $f$ defined pointwise by \[g(x) = f(x) + b,\]
+and similarly put $h\colon E \to [0,2b]$ as the measurable reflection and translation of $f$ defined pointwise by 
+\begin{equation*}
+    h(x) = b - f(x).
+\end{equation*}
+
+Put $\delta_n = 2^{-n}$.  For each natural number $n$ and each real number $t$, there is a unique integer $k = k_n(t)$ such that 
+\[
+    k\delta_n \le t < (k+1)\delta_n.
+\]
+Define a countable family of functions $\lambda_n \colon [0, \infty] \to [0,\infty]$ by
+\begin{equation*}
+\lambda_n(t) = 
+\begin{cases}
+    k_n(t)\delta_n & \text{if $0 \le t < n$}\\
+    n & \text{if $n \le t \le \infty$}.
+\end{cases}
+\end{equation*}
+Each $\lambda_n$ is then a Borel function on $[0, \infty]$, 
+\begin{equation*}
+    t - \delta_n < \lambda_n(t) \le t \qq{if $0 \le t \le n$,}
+\end{equation*}
+$0 \le \lambda_1 \le \lambda_2 \le \cdots \le t$, and $\lambda_n(t) \to t$ as $n \to \infty$ for each $t \in [0,\infty]$. 
+
+It follows that the composite functions $\gamma_n = \lambda_n \circ g$ and $\eta_n = \lambda_n \circ h$ are 
+\begin{itemize}
+    \item simple functions from $E$ to $[0, \infty]$, 
+    \item monotonically increasing pointwise on $E$, and 
+    \item satisfy $0 \le g - \gamma_n < 2^{-n}$ and $0 \le h - \eta_n < 2^{-n}$ everywhere on $E$ once $n$ is larger than $2b$.
+\end{itemize}
+
+(This particular construction of the simple approximations $\gamma_n$ and $\eta_n$ for the unsigned functions $g$ and $h$ is quoted from \cite{Rud87}, Theorem 1.17.)
+
+We have thus taken $f \colon E \to (-b,b)$, translated $f$ to define $g \colon E \to [0, 2b]$, reflected and translated $f$ to define $h \colon E \to [0,2b]$, then constructed simple approximations $\gamma_n$ and $\eta_n$ which convergence uniformly (from below) to $g$ and $h$ respectively. 
+
+All that remains is to define the sequences of monotonically increasing, respectively decreasing, simple functions 
+$\phi_n \colon E \to [-b,b]$ and $\psi_n \colon E \to [-b,b]$ by
+\begin{equation*}
+    \phi_n(x) = \gamma_n(x) - b \qq{and} \psi_n(x) = b - \eta_n(x) \qq{for each $x \in E$ and each $n \in \N$.}
+\end{equation*}
+It follows that
+\[
+0 \le f - \phi_n < 2^{-n} \qq{and} 0 \le \psi_n - f < 2^{-n} \qq{everywhere on $E$ once $n$ is larger than $2b$,}
+\] 
+which implies $\phi_n \nearrow f$ uniformly from below and $\psi_n \searrow f$ uniformly from above.
+\end{proof}
+
+\item[3.13] Let $f$ be any real-valued measurable function $E \xrightarrow{f} \R$, where $E \in \sM$ is a Lebesgue measurable set of real numbers.Then there exists a sequence of semisimple functions $\{f_n\}$ on $E$ that converges uniformly to $f$ on $E$.
+
+\begin{proof}
+Decompose $f = f^{+} - f^{-}$ for $f^{+}:= \max\set{f, 0}$ and $f^{-} := \max\set{-f,0}$ on $E$. Then both $f^{+}$ and $f^{-}$ are unsigned measurable functions defined on $E$. We make a slight modification to the construction of the simple functions in 3.12 to obtain a sequence of semisimple functions. Again, put $\delta_n = 2^{-n}$ (the "mesh size for the range"). Again, for each natural number $n$ and each real number $t$, there is a unique integer $k = k_n(t)$ such that 
+\[
+    k\delta_n \le t < (k+1)\delta_n.
+\]
+Notice the difference from 3.12 here: Define the \emph{semisimple} functions $\phi_n \colon [0, \infty] \to [0,\infty]$ by
+\begin{equation*}
+\phi_n(t) = k_n(t)\delta_n \qq{for each $n$, for all $t \in [0, \infty]$.}
+\end{equation*}
+Each $\phi_n$ is again a Borel function on $[0, \infty]$, again $0 \le \phi_1 \le \phi_2 \le \cdots \le t$, again $\phi_n(t) \to t$ as $n \to \infty$ for each $t \in [0,\infty]$, but this time
+\begin{equation*}
+    t - \delta_n < \phi_n(t) \le t \qq{for \emph{all} $t$}
+\end{equation*}
+It is visible (upon writing out the appropriate floor operators) that the composites $s^+_n := \phi_n \circ f^+$ and $s^-_n := \phi_n \circ f^-$ are semisimple functions such that 
+\begin{equation}
+    \label{uniformity}
+    0 \le f^+ - s^+_n < 2^{-n} \qq{and} 0 \le f^- - s^-_n < 2^{-n} \qq{everywhere on $E$.}
+\end{equation}
+The sum of semisimple functions $s_n := s_n^+ - s_n^-$ is again semisimple, and defines a sequence $\set{s_n}_{n \in \N}$. Because $f^+$ and $f^-$ have disjoint support, the observation \ref{uniformity} implies for all $\epsilon > 0$ there exists $N \in \N$ such that $2^{-N} < \epsilon$ and $\abs{f-s_\nu} < 2^{-\nu}$ everywhere on $E$ for all $\nu \ge N$, and the claim follows.
+\end{proof}
+
+\item[3.16] Let $I$ be a closed bounded interval of real numbers, containing a Lebesgue measurable subset $E$. For each $\epsilon > 0$ there is a piecewise constant function $h$ on $I$ and a measurable subset $F$ of $I$ for which
+\begin{equation*}
+    h = \id{E} \qq{on $F$ and} m(I\setminus F) < \epsilon.
+\end{equation*}
+
+\begin{proof}
+Without loss of generality (because the Lebesgue measure is translation invariant and is appropriately scaled by dilations of the real line), we assume $I = [0,1]$. Now suppose $E \subset I$ is Lebesgue measurable. Because $E$ is measurable and of finite measure, $E$ is almost the disjoint union of finitely many open intervals. To be precise:
+
+\begin{itemize}
+    \item Monotonicity forces $E$ to have finite measure
+          \begin{equation*}
+              m(E) \le m(I) = 1 < \infty,
+          \end{equation*}
+    \item Because $E \in \sM$ and $m(E) < \infty$, for each $\epsilon > 0$ there is a finite disjoint union $U_\epsilon$ of elementary sets (which we may take as disjoint open intervals $(a_{i_\epsilon}, b_{i_\epsilon}) \subset \R$ for $i_\epsilon = 1, \ldots, k_\epsilon$)
+          \[U_\epsilon = \bigsqcup_{i_\epsilon = 1}^{k_\epsilon} (a_{i_\epsilon}, b_{i_\epsilon})\]
+          such that the measure of the symmetric difference between $E$ and $U_\epsilon$ is strictly less than $\epsilon$. 
+\end{itemize}
+
+Let $\epsilon > 0$ and take $h = \id{U_\epsilon}$. Let $F = E \triangle U_\epsilon \in \sM$. Because $h(x) = \id{E}(x)$ for all $x \in I \setminus F$, the claim follows.
+\end{proof}
+\end{enumerate}
+
+\section*{Chapter 4}
+
+See attached.
+
+\bibliography{/home/colton/coltongrainger.bib}
+\bibliographystyle{alpha}
+\end{document}

@@ -1,7 +1,7 @@
 \documentclass[onesided]{ccg-pset}
 
 \course{MATH 6310}
-\psnum{1}
+\psnum{2}
 \author{Colton Grainger}
 \date{2019-09-20}
 
@@ -65,7 +65,7 @@ Case I. Assume $\limsup a_n < 0$ and $\limsup b_n = \infty$. Let $\limsup a_n = 
     So let $\epsilon > 0$.  By proposition \ref{prop:royden_1_19}, the sequence $\paren{a_n}$ is eventually%
     \footnote{%
 A sequence is said to \term{eventually} satisfy some property $\sP$ if there exists $N \in \N$ such that for all indices $k \ge N$, the subsequence $(a_k)$ satisfies that property $\sP$.%
-    }%
+    }
     bounded from above by some positive $\mu \in \R_{>0}$. Moreover, unless to contradict \ref{prop:royden_1_19}, that $\limsup b_n = \infty$ implies $\paren{b_n}$ is unbounded. Thence $\paren{\mu b_n}$ is unbounded too. Therefore, as $\ell > 0$, the bound on $(a_k)$ and infinite arithmetic yields
     \begin{equation*}
         \limsup a_nb_n \le \limsup \mu b_n = \mu \limsup b_n = \infty = \ell \cdot \infty = \limsup a_n \cdot \limsup b_n
@@ -114,6 +114,7 @@ as desired.
 
     Case II. Say the image of $(a_n)$ has no condensation point in $\R$, but $(a_n)$ does have a constant subsequence. Then we are done, for the constant subsequence is trivially monotone.
 
+    \newpage
     Case III. Say the image of $(a_n)$ has no condensation point in $\R$, and further suppose that $(a_n)$ has no constant subsequence. Then $a_n)$ attains in value in its image at most finitely many times, and we may re-index for all $i$ such that $(a_{n_i})$ is injective and has infinite image in $\R$. By assumption that $(a_n)$ has no condensation point, neither does the subsequence $(a_{n_i})$ have a condensation point.
 
     Apply the axiom of countable choice to start with a vertex $v_0$. Then (w.l.o.g.) infinitely many of the $a_{n_i}$ lie in $(v_0, \infty)$, else the image of the $a_{n_i}$ would be the union of the two finite subsets of the $a_{n_i}$ at most $v_0$ and the $a_{n_i}$ at least $v_0$. Let $v_1$ be the least of the $a_{n_i}$ to meet $(v_0, \infty)$, where the minimum exists because the image of the $a_{n_i}$ has no limit point in $\R$. 
@@ -150,7 +151,9 @@ as desired.
         \label{riemannupper}
         \inf\set{\sum_{j=1}^m \ell(J_j) : [0,1] \subset \bigcup_{j=1}^m J_k} \le \sum_{k=1}^n\mu^*(I_k)
     \end{equation}
-    First I claim our finite open cover $\set{I_k}$ of $D$ by open balls has a refinement into disjoint open balls (wlog, suppose these are increasingly ordered). Such a disjoint refinement is possible because the candidates for the endpoints of this refinement (i.e. the endpoints of open intervals $\set{\tilde I_k}$ such that $\tilde I_k \subset I_k$ for all $k$) is the dense set of irrational numbers in $[0,1]$. So suppose this refinement $\set{\tilde I_k}$ has been obtained. Now make a further modification to the $\set{\tilde I_k}$ by removing $0$ and $1$ from $\tilde I_1$ and $\tilde I_k$, that is, let
+    First I claim our finite open cover $\set{I_k}$ of $D$ by open balls has a refinement into disjoint open balls (wlog, suppose these are increasingly ordered). Such a disjoint refinement is possible because the candidates for the endpoints of this refinement (i.e. the endpoints of open intervals $\set{\tilde I_k}$ such that $\tilde I_k \subset I_k$ for all $k$) is the dense set of irrational numbers in $[0,1]$. 
+
+    So suppose this refinement $\set{\tilde I_k}$ has been obtained. Now make a further modification to the $\set{\tilde I_k}$ by removing $0$ and $1$ from $\tilde I_1$ and $\tilde I_k$, that is, let
     \begin{align*}
         J_0 &= I_1 \setminus \{x \ge 0\}\\
         J_1 &= I_1 \setminus \{x  < 0\}\\
@@ -158,7 +161,8 @@ as desired.
         J_n &= I_n \setminus \{x  < 1\}\\
         J_{n+1} &= I_{n+1} \setminus \{x  \ge 1\}.
     \end{align*}
-    Note that $J_0 \sqcup J_1 = I_1 \setminus \{0\}$ and $J_k \sqcup J_{k+1} \setminus \{1\}$.
+    Note that $J_0 \sqcup J_1 = I_1 \setminus \{0\}$ and $J_n \sqcup J_{n+1} = I_n \setminus \{1\}$. Note further, at this point in the construction, the lengths of $J_0$ and $J_{n+1}$ have greatest lower bound $0$.
+
     Because the Lebesgue outer measure of an interval $I$ is the length of that interval, the outer measure of the disjoint union of the $J_j$ is equal to the outer measure of the disjoint union of the refinement $\tilde I_k$, which, by monotonicity, is at most the sum of the outer measures of the original finite cover $\set{I_k}$, ie,
     \begin{equation}
         \label{bound}

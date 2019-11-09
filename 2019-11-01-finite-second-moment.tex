@@ -1,0 +1,21 @@
+\documentclass[onesided]{ccg-pset}
+
+\course{MATH 6310}
+\psnum{(REVISION TO PROBLEM 7 MIDTERM 1)}
+\author{Colton Grainger}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+
+\item[7] Let $h \in L^+([0,1])$ be a nonnegative measurable function on $[0,1]$ such that $\int_0^1 h^2(x)\dd{x}$ is finite. Let $g_n$ be a sequence of functions in $L^+([0,1])$ such that for every $x \in [0,1]$ $g_n(x) + \int_0^1\abs{x-y}g_n(y)\dd{y} = h(x)$. If $g_n(x) \to g(x)$ for each $x \in [0,1]$, then $g(x) + \int_0^1 \abs{x-y}g^2(y)\dd{y} = h(x)$ as well.
+
+\begin{proof}
+    By Jensen's inequality, that $\int_0^1 h^2(x) \dd{x}$ is finite implies that $\int_0^1 h(x)\dd{x}$ is finite as well. Hence $h \in L^+ \cap L^1$, i.e., $h$ is absolutely integrable, and finite almost everywhere. Let $g_n$ be a sequence of nonnegative measurable functions in $L^+([0,1])$ such that $g_n(x) + M(x) = h(x)$ for $M(x) := \int_0^1 \abs{x-y}g_n^2(y)\dd{y}$. Then $g_n(x) \le h(x)$ for each $x$. Moreover, for each $x$ and $y$ in $[0,1]$, we deduce $\abs{x-y}g_n^2(y) \le g_n^2(x) \le h^2(x)$. Applying the Dominated Convergence Theorem to the sequence of measurable functions $\abs{x-y}g_n^2(y)$ dominated by $h$, the proposition follows.
+\end{proof}
+
+\end{enumerate}
+
+\end{document}
