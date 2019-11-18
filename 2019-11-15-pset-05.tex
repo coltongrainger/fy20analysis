@@ -1,0 +1,133 @@
+\documentclass[onesided]{ccg-pset}
+
+\course{MATH 6310}
+\psnum{7}
+\author{Colton Grainger}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+
+\item[5.6] 
+Let $\set{f_n \colon E \to \bar\R \mid f_n \text{ is measurable, $n \in \N$}}$ be a sequence of finite a.e.~functions that converges in measure to a finite a.e.~measurable function $f \colon E \to \bar\R$. Suppose $g \colon E \to \bar\R$ is a finite a.e.~measurable function.
+
+\begin{prop*}
+    $f_n \to g$ in measure iff $f$ and $g$ agree almost everywhere on $E$.
+\end{prop*}
+
+\begin{proof}
+For necessity, say that $f_n \to g$ in measure. Linearity of convergence in measure implies that $0 = f_n -  f_n \to f - g$ in measure; hence for each radius $\eta > 0$, 
+\begin{equation}
+    \label{eq:limitwithnomeasure}
+    \lim_n \mu\set{x \colon \abs{f(x) - g(x)} \ge \eta} = 0.
+\end{equation}
+Since $f-g$ has no dependence on $n$, apply \eqref{eq:limitwithnomeasure} by letting $\eta_j$ converge to $0$ through an arbitrary sequence of positive real numbers. So take $\eta_j = j^{-1}$ for $j \in \N$. By \eqref{eq:limitwithnomeasure} and subadditivity, 
+\begin{equation*}
+    \mu\paren{\set{x: f(x) \neq g(x)}} = \mu \paren{\cup_{j \in\N} \set{x \colon \abs{f(x) - g(x)} \ge j^{-1}}} \le \sum_{j \in \N} 0 = 0.
+\end{equation*}
+Whence $f = g$ a.e. 
+
+For sufficiency, say $f = g$ a.e. Let $\eta > 0$, $\epsilon > 0$. Because $f_n \to f$ in measure, given $\eta$ and $\epsilon$ we may choose $N \in \N$ so large that 
+\begin{equation}
+\label{eq:fnclosetof}
+    \mu\paren{\set{x : \abs{f_n(x) - f(x)} \ge \eta}} < \epsilon \qfor n \ge N
+\end{equation}
+Let $D$ be the null subset of $E$ on which $f \neq g$. Note $D$ and its complement $D^c$ in $E$ are measurable, and $f = g$ on the complement $D^c$. Hence
+\begin{equation*}
+    \set{x \in E : \abs{f_n(x) - g(x)} \ge \eta} = \set{x \in E\cap D : \abs{f_n(x) - g(x)} \ge \eta} \sqcup \set{x \in E \cap D^c: \abs{f_n(x) - f(x)} \ge \eta}.
+\end{equation*}
+Measuring the sets on the left and right hand sides of the above equation, additivity, monotonicity, and \eqref{eq:fnclosetof} yield
+\begin{equation*}
+    \mu\paren{\set{x \in E : \abs{f_n(x) - g(x)} \ge \eta}} \le 0 + \set{x \in E:\abs{f_n(x) - f(x)} \ge \eta} < \epsilon.
+\end{equation*}
+Whence $f_n \to g$ in measure.
+\end{proof}
+
+\item[5.7] Suppose that $E$ has finite measure, that the measurable finite a.e.~functions $f_n$ converge to $f$ in measure on $E$, and that $g$ is a measurable finite a.e.~function on $E$.
+
+\begin{prop*} 
+$f_n\cdot g \to f \cdot g$ in measure. 
+\end{prop*}
+
+\begin{lem*}
+A measurable function that's finite a.e.~on a set of finite measure is almost bounded, i.e., bounded except for on a set of arbitrarily small measure. \end{lem*}
+
+\begin{proof}[Proof of lemma]
+In our case, the function $g \colon E \to \bar \R$ satisfies these hypotheses. Because $g$ is finite a.e., the horizontally truncated sequence \[\abs{g} \wedge n \qfor n \in \N\] converges pointwise a.e.~to $\abs{g}$. Because $E$ is of finite measure, Egorov's theorem implies: $\abs{g} \wedge n$ converges pointwise a.e.~to $\abs{g}$ iff $\abs{g} \wedge n$ converges almost uniformly to $\abs{g}$. Taking $\delta > 0$ and $\epsilon = 1$, the almost uniform convergence of $\abs{g} \wedge n$ to $\abs{g}$ provides a measurable subset $D \subset E$ with $\mu(D) < \delta$ and a time $N \in \N$ such that 
+\begin{equation*}
+    \sup_{x \in E\setminus D} \set{\abs{g(x)} - (\abs{g} \wedge n)(x)} < \epsilon = 1 \qfor n \ge N.
+\end{equation*}
+In particular, $\sup_{x \in E\setminus D} \abs{g(x)}< N+1$. Thus $g$ is dominated by the constant $N+1$ on $E\setminus D$, with $D$ of arbitrarily small measure.
+\end{proof}
+
+\begin{proof}[Proof of proposition] 
+Let $\eta > 0$ and $\epsilon > 0$. By the lemma there's a set $D\subset E$ of measure 
+\begin{equation*}
+    \mu(D) < \frac{\epsilon}{2}
+\end{equation*}
+outside of which $\abs{g}$ is bounded by some constant $M \in \N$. Hence $\frac{\eta}{\abs{g}} > \frac{\eta}{M}$ outside of $D$. Thus the subset of $E\setminus D$ on which $f_n\cdot g$ fails to be uniformly within $\eta$ of $f\cdot g$ is contained in the set on which $f_n$ fails to be within $\frac{\eta}{M}$ of $f$:
+\begin{align*}
+    \set{x \in E\setminus D : \abs{(f_n\cdot g)(x) - (f\cdot g)(x)} \ge \eta} &=
+    \set{x \in E\setminus D : \abs{f_n(x) - f(x)} \ge \frac{\eta}{\abs{g(x)}}} \\
+&\subset \set{x \in E : \abs{f_n(x) - f(x)} \ge \frac{\eta}{M}}.
+\end{align*}
+But because $f_n \to f$ is measure on $E$, there's a time $N \in \N$ such that for all $n \ge N$
+\begin{equation*}
+\mu\set{x \in E : \abs{f_n(x) - f(x)} \ge \frac{\eta}{M}} < \frac{\epsilon}{2}.
+\end{equation*}
+Taking both bounds of $\frac{\epsilon}{2}$ and appealing to additivity and monotonicity of measure, we conclude
+\begin{align*}
+    &\mu\set{x \in E: \abs{(f_n\cdot g)(x) - (f\cdot g)(x)} \ge \eta} \\
+&= \mu\set{x \in D : \abs{f_n(x) - f(x)} \ge \frac{\eta}{\abs{g(x)}}} + \mu\set{x \in E\setminus D : \abs{f_n(x) - f(x)} \ge \frac{\eta}{\abs{g(x)}}}\\
+&< \mu(D) + \frac{\epsilon}{2} = \epsilon.
+\end{align*}
+\end{proof}
+
+Now let $(E, \sM, \mu)$ be a finite measure space. Let $\set{f_n \colon E \to \R}$ and $\set{g_n \colon E \to \R}$ be sequences of real-valued functions.\footnote{%
+  WLOG. For the purposes of convergence in measure and convergence pointwise a.e., a sequence with finite a.e.~terms agrees termwise a.e.~with a sequence of properly real-valued functions.
+      } 
+Suppose $f_n$ converges in measure to a function%
+      \footnote{
+      Again, this function being given only after possibly deleting the null set on which $f$ attains infinite values.
+      }
+ $f \colon E \to \R$, and suppose $g_n$ converges in measure to a function $g \colon E \to \R$.
+\begin{prop*}
+$f_n \cdot g_n \to f \cdot g$ in measure.
+\end{prop*}
+
+\begin{lem*}
+    On a finite measure space $E$, a sequence of measurable functions $\set{f_n \colon E \to \R}$ converges in measure iff each subsequence $f_{a(n)}$ has a further subsequence $f_{b(n)}$ that converges a.e.~pointwise.
+\end{lem*}
+
+\begin{proof}[Proof of subsequence lemma]
+For necessity of the criterion, say $f_n \to f$ converges in measure. Let $f_{a(n)}$ be an arbitrary subsequence of $f_{n}$. Because $f_{a(n)} \to f$ in measure as well, we apply a result due to Riesz (Theorem 5.4, \cite{RF10}), to find a further subsequence $f_{b(n)}$ such that converges pointwise a.e.~to the same limit function $f$.
+
+For sufficiency of the criterion, we prove the contrapositive: ``if $f_n \not\to f$ in measure, then there's a subsequence $f_{a(n)}$ such that for all further subsequences $f_{b(n)}$ of $f_{a(n)}$ we have $f_{b(n)} \not\to f$ pointwise a.e.''  So suppose $f_n$ does not converge in measure to $f$. We'll find a subsequence $f_{a(n)}$ of $f_n$ that has no pointwise a.e.~convergence subsequences. To this end, fix $\epsilon > 0$. Because $f_n \not\to f$ in measure
+\begin{equation*}
+    \lim_n \mu \set{x: \abs{f_n(x) - f(x)} \ge \epsilon} \neq 0 \qq{so it follows}
+    \limsup_{n \to \infty} \mu \set{x: \abs{f_n(x) - f(x)} \ge \epsilon} = \kappa > 0.
+\end{equation*}
+Hence there's a subsequence $f_{a(n)}$ with 
+\begin{equation*}
+    \lim_{a(n)} \mu \set{x: \abs{f_{a(n)}(x) - f(x)} \ge \epsilon}  = \kappa > 0.
+\end{equation*}
+If any subsequence $f_{b(n)}$ of $f_{a(n)}$ converged to $f$ pointwise a.e., then for this $\epsilon > 0$ there'd be a time $N \in \N$ such that
+\begin{equation*}
+    \mu \set{x: \abs{f_{b(n)}(x) - f(x)} \ge \epsilon} = 0.
+\end{equation*}
+But the terms $a(n)$ are eventually larger than $N$. Whence the assumption that $f_{b(n)}$ converges pointwise produces the contradiction $\kappa = 0$. So any subsequence $f_{b(n)}$ of $f_{a(n)}$ does not converge pointwise a.e.~to $f$.
+\end{proof}
+
+\begin{proof}[Proof of proposition]
+To show $f_n \cdot g_n \to f\cdot g$ in measure, it suffices to show that each subsequence of $f_n \cdot g_n$ has a further subsequence that converges to $f \cdot g$ pointwise a.e. So let $f_{a(n)} \cdot g_{a(n)}$ be an arbitrary subsequence of $f_n \cdot g_n$. Appealing to Riesz, because $\mu(E) < \infty$, there's a subsequence $b(n)$ of $a(n)$ such that $f_{b(n)}$ (produces $f_{b(n)} - f$ with tail support vanishing sufficiently fast in a set of finite measure, and hence) converges pointwise a.e.~to $f$. Again appealing to Riesz, as $g_{b(n)} \to g$ in measure, there's a further subsequence $c(n)$ of $b(n)$ such that $g_{c(n)} \to g$ pointwise a.e. Since $c(n)$ is a subsequence of $b(n)$, we have that $f_{c(n)} \to f$ pointwise a.e.~as well. 
+
+Let $E_0$ be the null set outside of which both $g_{c(n)}$ and $f_{c(n)}
+\end{proof}
+
+\end{enumerate}
+
+\bibliography{/home/colton/coltongrainger.bib}
+\bibliographystyle{alpha}
+\end{document}
